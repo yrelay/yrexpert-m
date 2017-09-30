@@ -1,0 +1,110 @@
+;!----------------------------------------------------------------------------!
+;!                                                                            !
+;! Licence et conditions d'utilisation                                        !
+;! Yexpert : (your) Systeme Expert sous Mumps GT.M et GNU/Linux               !
+;! Copyright (C) 2001-2015 by Hamid LOUAKED (HL).                             !
+;!                                                                            !
+;! Hamid LOUAKED                                                              !
+;! 10, impasse Faraday                                                        !
+;! 78520 LIMAY                                                                !
+;! France                                                                     !
+;!                                                                            !
+;! yexpert@yrelay.fr                                                          !
+;! http://www.yrelay.fr/                                                      !
+;!                                                                            !
+;! Ce programme est un logiciel libre ; vous pouvez le redistribuer           !
+;! et/ou le modifier conformement aux dispositions de la Licence Publique     !
+;! Generale GNU, telle que publiee par la Free Software Foundation ;          !
+;! version 3 de la licence, ou encore (a votre choix) toute version ulterieure.
+;!                                                                            !
+;! Ce programme est distribue dans l'espoir qu'il sera utile,                 !
+;! mais SANS AUCUNE GARANTIE ; sans meme la garantie implicite de             !
+;! COMMERCIALISATION ou D'ADAPTATION A UN OBJET PARTICULIER.                  !
+;! Pour plus de details, voir la Licence Publique Generale GNU.               !
+;!                                                                            !
+;! Un exemplaire de la Licence Publique Generale GNU doit etre fourni avec    !
+;! ce programme ; si ce n'est pas le cas,                                     !
+;! ecrivez a la Free Software Foundation Inc.,                                !
+;! 675 Mass Ave, Cambridge, MA 02139, Etats-Unis.                             !
+;!                                                                            !
+;! Ce logiciel est telechargeable a l'adresse http://www.yrelay.fr/ ;         !
+;! vous trouverez egalement, sur ce site, un mode d'emploi complet            !
+;! et des informations supplementaires.                                       !
+;!                                                                            !
+;!----------------------------------------------------------------------------!
+;!                                                                            !
+;! GNU General Public License : http://www.gnu.org/copyleft/gpl.html          !
+;!                                                                            !
+;! Traduction francaise : http://dachary.org/loic/gpl-french.pdf              !
+;!                                                                            !
+;!----------------------------------------------------------------------------!
+
+;!============================================================================!
+;! Nomprog     :                                                              !
+;! Module      :                                                              !
+;! But         :                                                              !
+;!                                                                            !
+;! Description :                                                              !
+;!                                                                            !
+;!                                                                            !
+;!                                                                            !
+;!                                                                            !
+;!                                                                            !
+;!----------------------------------------------------------------------------!
+;! Modif ! Auteur ! Date     ! Commentaires                                   !
+;!-------!--------!----------!------------------------------------------------!
+;!       ! HL     ! 22/03/01 ! Creation                                       !
+;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL002 ! HL     ! 00/00/00 !                                                !
+;!-------!--------!----------!------------------------------------------------!
+;!============================================================================!
+
+;%SDESREC^INT^1^59547,73889^0
+SDESREC(XD,YD,XA,YA,TYPL,VIS,OK,OBLI) 
+ 
+ 
+ 
+ 
+ N ATT,NOM,PAR,R,TYP,XH,YH,XB,YB
+ S OK=1
+ S TYPL=$$TYPL^%SDEDEF($$ZSUBST^%QZCHSUB(TYPL,"""",""))
+DEB 
+ D EFFBAS^%SDUMEN
+ D AFFI^%SDUMEN(0,0,$$^%QZCHW("Pointez le point de depart du rectangle avec la mire"))
+L0 D ^%PBPZGRA S R=$$LOC^%PBMFN(.XD,.YD)
+ I R=0,OBLI G L0
+ I R=0 S OK=0 G FIN
+ D POINT^%PBMFN(XD,YD,0)
+ 
+ D EFFBAS^%SDUMEN
+L11 D AFFI^%SDUMEN(0,0,$$^%QZCHW("Pointez le point oppose du rectangle avec la mire"))
+L1 D ^%PBPZGRA S R=$$LOC^%PBMFN(.XA,.YA)
+ I R=0,OBLI G L1
+ D EFFBAS^%SDUMEN
+ I R=0 D POINT^%PBMFN(XD,YD,1) S OK=0 G FIN
+ I (XA=XD)!(YA=YD) D ^%VSQUEAK G L11
+ D CAL
+ D DROITE^%PBMFN(XD,YD,XB,YB,0,TYPL,VIS)
+ D DROITE^%PBMFN(XB,YB,XA,YA,0,TYPL,VIS)
+ D DROITE^%PBMFN(XA,YA,XH,YH,0,TYPL,VIS)
+ D DROITE^%PBMFN(XH,YH,XD,YD,0,TYPL,VIS) H 2
+FIN 
+ Q
+ 
+CAL 
+ I YD>YA S XH=XD,YH=YA,XB=XA,YB=YD Q
+ I YD<YA S XH=XA,YH=YD,XB=XD,YB=YA
+ Q
+ 
+EFF(XD,YD,XA,YA,TYPL,VIS) 
+ N XB,YB,XH,YH
+ S TYPL=$$TYPL^%SDEDEF($$ZSUBST^%QZCHSUB(TYPL,"""",""))
+ D ^%PBPZGRA
+ D CAL
+ D POINT^%PBMFN(XD,YD,1),POINT^%PBMFN(XA,YA,1)
+ D DROITE^%PBMFN(XD,YD,XB,YB,1,TYPL,VIS)
+ D DROITE^%PBMFN(XB,YB,XA,YA,1,TYPL,VIS)
+ D DROITE^%PBMFN(XA,YA,XH,YH,1,TYPL,VIS)
+ D DROITE^%PBMFN(XH,YH,XD,YD,1,TYPL,VIS),EFF^%PBP5EC(0)
+ Q
+

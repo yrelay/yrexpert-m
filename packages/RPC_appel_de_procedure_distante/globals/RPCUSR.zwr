@@ -1,0 +1,17 @@
+GT.M MUPIP EXTRACT
+16-SEP-2017  15:50:32 ZWR
+^RPCUSR("irelay",0)="0"
+^RPCUSR("irelay",1)="0"
+^RPCUSR("irelay",2)="0"
+^RPCUSR("irelay",3)=""
+^RPCUSR("irelay",4)="0"
+^RPCUSR("irelay",5)="5"
+^RPCUSR("irelay",6)="RET(6)"
+^RPCUSR("irelay",7)="Bienvenue chez Irelay"
+^RPCUSR("irelay",8)="Votre derniere connection est aujourd'hui a 12:39"
+^RPCUSR("irelay",9)="Vous avez 311 nouveaux messages. (311 dans le panier 'IN')"
+^RPCUSR("irelay",10)=""
+^RPCUSR("irelay",11)="Entrez '^NML' pour lire vos nouveaux messages."
+^RPCUSR("irelay",12)="Vous avez un courrier PRIORITAIRE!"
+^RPCUSR("irelay","group")="PROGRAMMEUR"
+^RPCUSR("irelay","vc")="0{2s65R!"

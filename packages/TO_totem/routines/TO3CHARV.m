@@ -1,0 +1,73 @@
+;!----------------------------------------------------------------------------!
+;!                                                                            !
+;! Licence et conditions d'utilisation                                        !
+;! Yexpert : (your) Systeme Expert sous Mumps GT.M et GNU/Linux               !
+;! Copyright (C) 2001-2015 by Hamid LOUAKED (HL).                             !
+;!                                                                            !
+;! Hamid LOUAKED                                                              !
+;! 10, impasse Faraday                                                        !
+;! 78520 LIMAY                                                                !
+;! France                                                                     !
+;!                                                                            !
+;! yexpert@yrelay.fr                                                          !
+;! http://www.yrelay.fr/                                                      !
+;!                                                                            !
+;! Ce programme est un logiciel libre ; vous pouvez le redistribuer           !
+;! et/ou le modifier conformement aux dispositions de la Licence Publique     !
+;! Generale GNU, telle que publiee par la Free Software Foundation ;          !
+;! version 3 de la licence, ou encore (a votre choix) toute version ulterieure.
+;!                                                                            !
+;! Ce programme est distribue dans l'espoir qu'il sera utile,                 !
+;! mais SANS AUCUNE GARANTIE ; sans meme la garantie implicite de             !
+;! COMMERCIALISATION ou D'ADAPTATION A UN OBJET PARTICULIER.                  !
+;! Pour plus de details, voir la Licence Publique Generale GNU.               !
+;!                                                                            !
+;! Un exemplaire de la Licence Publique Generale GNU doit etre fourni avec    !
+;! ce programme ; si ce n'est pas le cas,                                     !
+;! ecrivez a la Free Software Foundation Inc.,                                !
+;! 675 Mass Ave, Cambridge, MA 02139, Etats-Unis.                             !
+;!                                                                            !
+;! Ce logiciel est telechargeable a l'adresse http://www.yrelay.fr/ ;         !
+;! vous trouverez egalement, sur ce site, un mode d'emploi complet            !
+;! et des informations supplementaires.                                       !
+;!                                                                            !
+;!----------------------------------------------------------------------------!
+;!                                                                            !
+;! GNU General Public License : http://www.gnu.org/copyleft/gpl.html          !
+;!                                                                            !
+;! Traduction francaise : http://dachary.org/loic/gpl-french.pdf              !
+;!                                                                            !
+;!----------------------------------------------------------------------------!
+
+;!============================================================================!
+;! Nomprog     :                                                              !
+;! Module      :                                                              !
+;! But         :                                                              !
+;!                                                                            !
+;! Description :                                                              !
+;!                                                                            !
+;!                                                                            !
+;!                                                                            !
+;!                                                                            !
+;!                                                                            !
+;!----------------------------------------------------------------------------!
+;! Modif ! Auteur ! Date     ! Commentaires                                   !
+;!-------!--------!----------!------------------------------------------------!
+;!       ! HL     ! 22/03/01 ! Creation                                       !
+;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL002 ! HL     ! 00/00/00 !                                                !
+;!-------!--------!----------!------------------------------------------------!
+;!============================================================================!
+
+;TO3CHARV^INT^1^59547,74870^0
+TO3CHARV ;
+ 
+ K ^M($I) S NIV=2,ADR="TRAIT^TO3CHARV",NOMTREE="^[QUI]TREEWORK(NUFA" D ^%QCAGTU1
+END K MATA,NNOD,NNYB,NOPA,TVTA,TVTABE,UYY G FIN
+TRAIT D ^TO3GREF S DATAC=@NOM,NNOD=$P(DATAC,"^",1),TVTABE="^[QUI]TVPAR(NUFA,"""_TWREF_""")",NOPA=-1,NNYB=$P(DATAC,"^",2) K ^V($I,NNOD)
+ F UYY=0:0 S NOPA=$N(@TVTABE@(NOPA)) Q:NOPA=-1  S ^V($I,NNOD,NOPA)=@TVTABE@(NOPA) S:NNOD["~" ^V($I,NNYB,NOPA)=^V($I,NNOD,NOPA)
+ S TVTA="^[QUI]PAREFLAT(NUFA,NNOD)",NOPA=-1 F UYY=0:0 S NOPA=$N(@TVTA@(NOPA)) Q:NOPA=-1  S ^V($I,NNOD,NOPA)=@TVTA@(NOPA)
+ G:'($D(^V($I,NNOD,$$^%QZCHW("MATIERE")))) FIN S MATA=^V($I,NNOD,$$^%QZCHW("MATIERE")) K ^M($I,MATA)
+ S TVTA="^[QUI]PARMAT(NUFA,"""_TWREF_""")",NOPA=-1 F UYY=0:0 S NOPA=$N(@TVTA@(NOPA)) G:NOPA=-1 FIN S ^M($I,MATA,NOPA)=@TVTA@(NOPA)
+FIN Q
+

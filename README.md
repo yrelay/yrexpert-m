@@ -1,4 +1,8 @@
+![yrexpert_logo.png](./images/yrexpert_logo.png)
+
 # yrexpert-m
+
+[![npm downloads][downloads-image]][downloads-url]
 
 yrexpert-m est le dépôt des fichiers M (GTM) pour le système expert *yrexpert* de [Yrelay](http://www.yrelay.fr). Vous pourrez mettre en oeuvre ces fichiers en mettant à jour **YXP** dans le paquet [**yrexpert-terminal**](https://github.com/yrelay/yrexpert-terminal).
 
@@ -295,3 +299,5 @@ Pour tester cette démonstration suivre la [documentation](https://github.com/yr
 * Yrelay Référentiels : https://code.yrelay.fr
 * Yrelay Github : https://github.com/Yrelay
 
+[downloads-image]: https://img.shields.io/npm/dm/yrexpert-m.svg
+[downloads-url]: https://npmjs.org/package/yrexpert-m

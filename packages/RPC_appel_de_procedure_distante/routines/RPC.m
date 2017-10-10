@@ -156,7 +156,7 @@ INIT
  S ^RPC("YXP",3,"use")="LOCALE"
  S ^RPC("YXP",3,"context")="RPCBAS"
  S ^RPC("YXP",3,"division")="Tester le RPC"
- S ^RPC("YXP",3,"description")="Depuis un terminal faire ssh yrelayprog@localhost puis w $$test^gtmYexpertRPC()"
+ S ^RPC("YXP",3,"description")="Depuis un terminal faire ssh yrelayprog@localhost puis w $$test^gtmYRexpertRPC()"
  S ^RPC("YXP",3,"statut")="Production"
  S ^RPC("YXP","id","RPCBAS AFFICHER BONJOUR",3)=""
 

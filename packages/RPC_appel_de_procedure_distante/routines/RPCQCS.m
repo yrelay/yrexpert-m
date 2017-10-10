@@ -63,7 +63,7 @@
 XQCS ;
  ;
 CHK(XQUSR,XQOPT,XQRPC) ;Vérifiez si cet utilisateur peut exécuter ce RPC depuis
- ; cette option. Appelé par gtmYexpertRPC et RPCUSR.
+ ; cette option. Appelé par gtmYRexpertRPC et RPCUSR.
  ;
  ; Paramètre d'entrée
  ; ==================

@@ -124,7 +124,7 @@ TEST()
  s ^TMP($j,"input",4,"value")="DESCRIPTION"
  s ^TMP($j,"input",5,"value")="TEST"
  s ^TMP($j,"input",6,"value")="1"
- s ok=$$RPCEXECUTE^gtmYexpertRPC("^TMP($j)")
+ s ok=$$RPCEXECUTE^gtmYRexpertRPC("^TMP($j)")
  QUIT ok
 
 TEST2()
@@ -139,7 +139,7 @@ TEST2()
  s ^TMP($j,"input",4,"value")="DESCRIPTION"
  s ^TMP($j,"input",5,"value")="TEST"
  s ^TMP($j,"input",6,"value")="1"
- s ok=$$RPCEXECUTE^gtmYexpertRPC("^TMP($j)")
+ s ok=$$RPCEXECUTE^gtmYRexpertRPC("^TMP($j)")
  QUIT ok
 
 TEST3()
@@ -158,7 +158,7 @@ TEST3()
  s ^TMP($j,"input",4,"value")="DESCRIPTION"
  s ^TMP($j,"input",5,"type")="LITERAL"
  s ^TMP($j,"input",5,"value")="1"
- s ok=$$RPCEXECUTE^gtmYexpertRPC("^TMP($j)")
+ s ok=$$RPCEXECUTE^gtmYRexpertRPC("^TMP($j)")
  QUIT ok
 
 

@@ -197,7 +197,7 @@ RPCEXECUTE(TMP,sessionId,sessionGlobal) ;
  ;;;W "-----tA1=",tA1,!
  ;;;W "-----tA2=",tA2,!
  ;;;W "-----=",X,! Q "OK"
- W "-----X=",X,!
+ ;W "-----X=",X,!
  X X  ; Exécuter la routine
  ;s ^irelay(ix,"execute")=""
  M @TMP@("result","value")=tResult

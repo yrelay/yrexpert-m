@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 15/10/17 ! Perte de la variable T                         !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -87,7 +87,8 @@ QSVAREC(T,VA)
 AFF D REAFF
 L0 
  S TABC(1)="COMMENTAIRE",TABC(2)="REPERTOIRE",TABC(3)="SITUATIONS",TABC(4)="ACTIONS",TABC(5)="ATTRIBUT",TABC(6)="TYPEMAJ",TABC(7)="ETAT"
-L0S D POCLEPA^%VVIDEO S BID=$$^%VZECHO("TABC")
+;HL002 L0S D POCLEPA^%VVIDEO S BID=$$^%VZECHO("TABC")
+L0S D POCLEPA^%VVIDEO S T0=T S BID=$$^%VZECHO("TABC") S T=T0
  F I=1,6,8,10,18,"COMMENTAIRE","REPERTOIRE","SITUATIONS","ACTIONS","ATTRIBUT","TYPEMAJ","ETAT" G:I=BID @$P(I," ",1)
  D ^%VSQUEAK G L0S
 1 

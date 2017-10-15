@@ -55,12 +55,14 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 00/00/00 ! Manque %VCMS(GRILL)                            !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
 ;%VCMS^INT^1^59547,74034^0
-GECMS(GRIL) 
+%VCMS(GRIL) ;HL002
+ G GO
+GECMS(GRIL)
 GO N LIPT,SCR,TPIL S GRIL(1)=GRIL,GRIL="^Z"_GRIL K ^SAV($I),@GRIL@($J) S @GRIL@($J)=1,@GRIL@($J,1)=GRIL(1),@GRIL@($J,1,0,"ACTIVE")=0
  F %U=1:1:^%SCRE(GRIL(1)) S @GRIL@($J,1,"RESUL",%U)="" I $D(^%SCRE(GRIL(1),%U,"INVISIBLE")) S %V=^%SCRE(GRIL(1),%U,"INVISIBLE"),@("@GRIL@($J,1,""RESUL"",%U)="_%V)
  D MEN

@@ -283,7 +283,7 @@ Suivre les instructions à l'écran.
 
 ### 6. Tester yrexpert-terminal
 
-Pour tester cette démonstration suivre la [documentation](https://github.com/yrelay/yrexpert-DMO/blob/master/documents/TesterParttitionDMO.md).
+Pour tester cette démonstration suivre la [documentation](https://github.com/yrelay/yrexpert-dmo/blob/master/documents/TesterParttitionDMO.md).
 
 ## 7. Comment contribuer ?
 

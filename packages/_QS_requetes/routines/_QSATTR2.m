@@ -56,6 +56,7 @@
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
 ;! HL002 ! HL     ! 17/06/12 ! %GTM-E-DEVPARUNK, Deviceparameter unknown      !
+;! HL003 ! HL     ! 19/10/17 ! %GTM-I-CTRLC, CTRL_C encountered               !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -175,7 +176,12 @@ AELA Q
  
 AJ(A,V,OR) 
  N DL S DL=$ZP(^ATT($J,Z,""))
- D PA^%QSGESTI(BA,O,A,V,OR),INST2^%QSATTR3(A,V,OR,.DL) Q
+ ;HL003 D PA^%QSGESTI(BA,O,A,V,OR),INST2^%QSATTR3(A,V,OR,.DL) Q
+ S V0=V
+ D PA^%QSGESTI(BA,O,A,V,OR)
+ S V=V0
+ D INST2^%QSATTR3(A,V,OR,.DL)
+ Q
  
 MOD(A,V,OR,LC) 
  S ^VAL($J,Z,LC)=V D PA^%QSGESTI(BA,O,A,V,OR)

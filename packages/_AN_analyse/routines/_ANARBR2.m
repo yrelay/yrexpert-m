@@ -141,11 +141,11 @@ SATT4 D:AFF'="" @(AFF_"("_$$S1^%QZCHAD(NOM)_","_$$S1^%QZCHAD(VAL)_")")
  Q VAL
  
  
-INF S POS=0,VAL="" G RET^%ANGEPIL
+;INF S POS=0,VAL="" G RET^%ANGEPIL
  
- S E1=$S(C=0:1,1:$$INT(C)) Q:E1="" ""
- S E2=$$INT($$RED(A,2)) Q:E2="" ""
- Q "I "_E1_" "_E2
+; S E1=$S(C=0:1,1:$$INT(C)) Q:E1="" ""
+; S E2=$$INT($$RED(A,2)) Q:E2="" ""
+; Q "I "_E1_" "_E2
  
 CBI K @(TEMPO) S @TEMPO@(1)="E1",@TEMPO@(2)="E2",@TEMPO@(3)="SA"
  D EMPV^%ANGEPIL(TEMPO)

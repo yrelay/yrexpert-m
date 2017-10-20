@@ -80,10 +80,11 @@ RPCBDDC ;
 SET(RET,QUI,%U7,%CUK,%UP,%UV,%UN) ;vous n'avez pas le droit de supprimer cet attribut********** %QMDAUC
  ; 
  ;SET affecte une valeur à l'attribut d'un individu.
- ; test : view "LINK":"RECURSIVE" zl "RPCBDDC" zl "_QSGESTI" d SET^RPCBDDC(.RET,"DMO","BAC.A.SABLE","DEFAUT","DESCRIPTION","TEST",1) W "-----RET=",RET,!
+ ; test : view "LINK":"RECURSIVE" zl "RPCBDDC" zl "_QSGESTI" d SET^RPCBDDC(.RET,"DMO","INTERFACE","TEST","QUESTION","TEST",1) W "-----RET=",RET,!
  ;
  I $$ZDIRECTORY^%GTM(QUI)'=1 Q "La base "_QUI_" de données utilisateur n'existe pas."
- S WHOIS=QUI,WHOIS("ETUDE")=0,NUL=$$ZDIRECTORY^%GTM(QUI) d PA^%QSGESTI(%U7,%CUK,%UP,%UV,%UN)
+ ;S WHOIS=QUI,WHOIS("ETUDE")=0,NUL=$$ZDIRECTORY^%GTM(QUI) d PA^%QSGESTI(%U7,%CUK,%UP,%UV,%UN)
+ S WHOIS=QUI,WHOIS("ETUDE")=0 d PA^%QSGESTI(%U7,%CUK,%UP,%UV,%UN)
  S RET=1
  Q
 
@@ -94,9 +95,11 @@ KILL(RET,QUI,%U7,%CUK,%UP,%UV,%UN) ;vous n'avez pas le droit de supprimer cet at
  ;
  I $$ZDIRECTORY^%GTM(QUI)'=1 Q "La base "_QUI_" de données utilisateur n'existe pas."
  ; Supprime tous les indices d'un attribut
- I %UN="" S WHOIS=QUI,WHOIS("ETUDE")=0,NUL=$$ZDIRECTORY^%GTM(QUI) d SAH^%QSGESTI(%U7,%CUK,%UP) Q
+ ;I %UN="" S WHOIS=QUI,WHOIS("ETUDE")=0,NUL=$$ZDIRECTORY^%GTM(QUI) d SAH^%QSGESTI(%U7,%CUK,%UP) Q
+ I %UN="" S WHOIS=QUI,WHOIS("ETUDE")=0 d SAH^%QSGESTI(%U7,%CUK,%UP) Q
  ; Supprime un indice d'un attribut
- S WHOIS=QUI,WHOIS("ETUDE")=0,NUL=$$ZDIRECTORY^%GTM(QUI) d PS^%QSGESTI(%U7,%CUK,%UP,%UV,%UN)
+ ;S WHOIS=QUI,WHOIS("ETUDE")=0,NUL=$$ZDIRECTORY^%GTM(QUI) d PS^%QSGESTI(%U7,%CUK,%UP,%UV,%UN)
+ S WHOIS=QUI,WHOIS("ETUDE")=0 d PS^%QSGESTI(%U7,%CUK,%UP,%UV,%UN)
  S RET=1
  Q
 

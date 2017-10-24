@@ -90,7 +90,11 @@ ECR(CH,XG,YH,CADRE)
  S LG=78-XG,LCH=$L(CH)
  D REV^%VVIDEO
  I CADRE D CARSA^%VVIDEO(XG,YH,LG,3) S DX=XG+1,DY=YH+1 X XY W $E(CH,1,LG-2)_$J("",(LG-LCH)-2)
- I '(CADRE) S DX=XG,DY=YH X XY W $E(CH,1,LG)_$J("",LG-LCH)
+ ;w "-----CH=",CH,!
+ ;w "-----XG=",XG,!
+ ;w "-----YH=",YH,!
+ ;w "-----CADRE=",CADRE,!
+ ;HL002 I '(CADRE) S DX=XG,DY=YH X XY W $E(CH,1,LG)_$J("",LG-LCH)
  D NORM^%VVIDEO
  Q
 

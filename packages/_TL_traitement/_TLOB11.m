@@ -88,13 +88,10 @@ TRACER(IDEB,NBREG)
  
 ECR(CH,XG,YH,CADRE) 
  S LG=78-XG,LCH=$L(CH)
+ S XY="W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72) S $X=DX,$Y=DY"
  D REV^%VVIDEO
  I CADRE D CARSA^%VVIDEO(XG,YH,LG,3) S DX=XG+1,DY=YH+1 X XY W $E(CH,1,LG-2)_$J("",(LG-LCH)-2)
- ;w "-----CH=",CH,!
- ;w "-----XG=",XG,!
- ;w "-----YH=",YH,!
- ;w "-----CADRE=",CADRE,!
- ;HL002 I '(CADRE) S DX=XG,DY=YH X XY W $E(CH,1,LG)_$J("",LG-LCH)
+ I '(CADRE) S DX=XG,DY=YH X XY W $E(CH,1,LG)_$J("",LG-LCH)
  D NORM^%VVIDEO
  Q
 

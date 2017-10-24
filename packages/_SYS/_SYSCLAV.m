@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 21/10/17 ! %GTM-E-INVCMD, Invalid command keyword encountered !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -75,11 +75,11 @@
 ISCTRLA() N CTRLA X ^REMANENCE($J,"CTRLA") Q CTRLA
  
 REMCTR N COND,I,TOU
+ S ^REMANENCE($J,"CTRLA")="S CTRLA=0" S CTRLA=0 Q  ;HL002
  I '($$GET^%SGVAR("CLAV")) S ^REMANENCE($J,"CTRLA")="S CTRLA=0" Q
  S COND="N CTT,DOLLARI S DOLLARI=$I U 0 R *CTT:0 U DOLLARI S CTRLA=0"
  S TOU="" F I=1:1 S TOU=$O(^%INCONNE("CLAVIER",CLTOUC,TOU)) Q:TOU=""  I ^%INCONNE("CLAVIER",CLTOUC,TOU)=1 S COND=COND_"!(CTT="_TOU_")"
- ;HL S ^REMANENCE($J,"CTRLA")=$XECUTE(COND)
- S ^REMANENCE($J,"CTRLA")="S CTRLA=0" XECUTE COND
+ ;HL002 S ^REMANENCE($J,"CTRLA")=$XECUTE(COND)
  Q
  
  

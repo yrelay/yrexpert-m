@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 24/10/17 ! %GTM-E-INVCMD, Invalid command keyword encountered!
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -108,7 +108,8 @@ KILL K ^GLOEXEC($J)
  
  
 GET(VAR) N VAL
- S $ZT="GETERR",VAL=^GLOEXEC($J,VAR,^GLOEXEC($J,VAR))
+ ;HL002 S $ZT="GETERR",VAL=^GLOEXEC($J,VAR,^GLOEXEC($J,VAR))
+ S $ZT="G GETERR",VAL=^GLOEXEC($J,VAR,^GLOEXEC($J,VAR))
  S $ZT="" Q VAL
 GETERR S $ZT="",VAL=$S($D(^GLOEXEC($J,VAR,"DEF")):^GLOEXEC($J,VAR,"DEF"),1:"") Q VAL
  

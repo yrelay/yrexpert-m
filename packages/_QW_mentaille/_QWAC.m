@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 01/11/17 ! %GTM-E-FALLINTOFLST, Fall-through to a label with formallist is not allowed !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -100,7 +100,8 @@ NEXREG
 ACTI 
  
  S NORULE=0
- D ^%VZATOU(.T,.F,0,0) I T=1 D CTRLA^%QWMCAC3("ADRT") G @ADRT
+ ;HL002 D ^%VZATOU(.T,.F,0,0) I T=1 D CTRLA^%QWMCAC3("ADRT") G @ADRT
+ D VVZATOU^%VZATOU(.T,.F,0,0) I T=1 D CTRLA^%QWMCAC3("ADRT") G @ADRT
  
  
 S1M3R S REPIND=REP_"^"_IND I $D(@WWSTEP@(ISTP,"SEL",REPIND)) G S1SUIT

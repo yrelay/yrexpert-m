@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 01/11/17 ! %GTM-E-FALLINTOFLST, Fall-through to a label with formallist is not allowed !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -187,7 +187,8 @@ FEXEPI
 ABORT(ST) 
  I '(ST) G PQABD
  N T,F
- D ^%VZATOU(.T,.F,0,0) I T'=1 Q 0
+ ;HL002 D ^%VZATOU(.T,.F,0,0) I T'=1 Q 0
+ D VVZATOU^%VZATOU(.T,.F,0,0) I T'=1 Q 0
 PQABD 
  D POCLEPA^%VVIDEO
  Q $$MES^%VZEOUI($$^%QZCHW("abandon immediat")_" ? ","N")

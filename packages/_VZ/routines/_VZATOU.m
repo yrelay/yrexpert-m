@@ -55,25 +55,22 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 31/10/17 ! %VTOUC() n'existe pas                          !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
 %VZATOU ;
-VVZATOU(TOUCHE,FLECHE,ATTENTE,ECHO) 
- 
- 
+VVZATOU(TOUCHE,FLECHE,ATTENTE,ECHO)
  N X2,X3,ZB,I,X
  I ATTENTE="" S ATTENTE=^TOZE($I,"ATTENTE")
  S (TOUCHE,FLECHE)="",(X2,X3)=0
  I '(ECHO) D ECHOFF^%VVIDEO
  I ECHO U 0
- 
- ;HL2 R *TOUCHE:ATTENTE
- ;;HL S TOUCHE=$$^%VTOUC()
+
+ ;HL002 R *TOUCHE:ATTENTE S TOUCHE=$$^%VTOUC()
  R *TOUCHE:ATTENTE  S TOUCHE=$$^%VCONVT(TOUCHE)
  
- ;HL2 G:$$CODFLEC^%INCCLAV(TOUCHE,.FLECHE) FIN
+ G:$$CODFLEC^%INCCLAV(TOUCHE,.FLECHE) FIN
  I ($A($ZB)=27)&($$CODFLEC^%INCCLAV(TOUCHE,.FLECHE)) G FIN
  S X=TOUCHE
  D TOUCHE^%INCCLAV(TOUCHE,.TOUCHE)
@@ -195,10 +192,7 @@ GZFLECHE
  D VVZATOU(.X1,.%F,5E-2,0)
  S %F=$S("HBGD"[%F:%F,1:"")
  Q
-TEST2 S A=$$MORE(.T,.F,.CTR,.ESC,20,0)
- W !,"A ",A," T --> ",T," F --> ",F," CTR--> ",CTR," ESC--> ",ESC
- I F="RETURN" Q
- G TEST2
+
 TEST 
  D ECHOFF^%VVIDEO
 L 
@@ -217,4 +211,15 @@ L1
  I (T>32)&(T'>126) W !," $C(T) ",$C(T)," F  ",F
  I T'=13 G L1
  Q
+TEST2 S A=$$MORE(.T,.F,.CTR,.ESC,20,0)
+ W !,"A ",A," T --> ",T," F --> ",F," CTR--> ",CTR," ESC--> ",ESC
+ I F="RETURN" Q
+ G TEST2
+TEST3
+ ;test > view "LINK":"RECURSIVE" zl "_VZATOU" D ^%IS D VARSYS^%QCSAP D TEST3^%VZATOU
+ D VVZATOU^%VZATOU(.X1,.%F,5,1)
+ W "-----X1=",X1,!
+ W "-----%F=",%F,!
+ Q
+
 

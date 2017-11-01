@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 01/11/17 ! %GTM-E-FALLINTOFLST, Fall-through to a label with formallist is not allowed !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -127,7 +127,8 @@ SUITE I NIV=0 S MESS=$$^%QZCHW("Construction de l'arbre")_"..." D ^%VZETOI
  D INITFI^%QCASTA(PILE)
  S FILS=""
 LOOP 
- I NIV=0 D ^%VZATOU(.TO,.FL,0,0) I TO=1 D ABEND(.%ABORT) I %ABORT G FIN
+ ;HL002 I NIV=0 D ^%VZATOU(.TO,.FL,0,0) I TO=1 D ABEND(.%ABORT) I %ABORT G FIN
+ I NIV=0 D VVZATOU^%VZATOU(.TO,.FL,0,0) I TO=1 D ABEND(.%ABORT) I %ABORT G FIN
  S FILS=$O(@GLO@(OBJ,FILS))
  I (FILS="")&(OBJ=OBJET) G FIN
  I FILS="" D DEPIL G LOOP

@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 01/11/17 ! Si la globale ^["YXP"]STRUCT n'existe pas      !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -67,7 +67,10 @@
  S DX=0,DY=10 D CLEBAS^%VVIDEO
  K ^POSENR($I),^TACOMPIL($I) S STOP=0,LB=20,LH=7,DX=66,DY=LB+2,PAGE=1 X XY W $$^%QZCHW("Page : "),PAGE S LI=LH,POSY=LH
 LISTE S %UCI=^TABIDENT($I,"%UCI"),QUCOM=%UCI,I=1,QU=QUI
-LIST0 S Y1=YC F UU=0:0 S Y1=$N(^[QU]STRUCT(Y1)) Q:Y1=-1  D TRAIT G:STOP=1 FIN
+LIST0
+ S $ZT="G ERRSTRUCT",NUL=$N(^[QU]STRUCT(Y1)) ;HL002
+ S Y1=YC F UU=0:0 S Y1=$N(^[QU]STRUCT(Y1)) Q:Y1=-1  D TRAIT G:STOP=1 FIN
+ERRSTRUCT S $ZT=""
  G:QU=QUCOM FIN S QU=QUCOM G LIST0
 FIN S NBPAG=PAGE D ^%ABDLGPA Q
 TRAIT Q:Y1="GAMLAC"  Q:Y1="z"  Q:Y1["/COMMENT"

@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 30/10/17 ! Doublement du caractère saisi.                 !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -65,7 +65,8 @@
  S IC=4,ABENDSCR=0
 LOOP G FIN:'($D(^[QU]SCRC(SCR,IC))) S (PCX,DX)=$L(^[QU]SCRC(SCR,IC,1))+^[QU]SCRC(SCR,IC,2),DY=^[QU]SCRC(SCR,IC,3) X XY S PCY=$Y
  S (OY1,Y1)=RESUL(IC)
-READ S RET="READ" O 0 R *X1
+;HL002 READ S RET="READ" O 0 R *X1
+READ S RET="READ" U 0:NOECHO R *X1
  ;;DTM
  G:$$FLECHE^%INCCLAV(X1,.X1,.X2,.X3) FLEC
  D TOUCHE^%INCCLAV(X1,.X1)
@@ -76,9 +77,10 @@ READ S RET="READ" O 0 R *X1
  
  ;;FINNONDTM
  G ABEND:X1<2,FIN:X1=6,CHAMP:X1=13,CHAMP:X1=7,DEL:X1=127 G:X1<32 REFUS
- W $C(X1) S OY1=Y1,Y1=$E(Y1,1,($X-PCX)-1)_$C(X1)_$E(Y1,($X-PCX)+1,299)
+ W $C(YG) S OY1=Y1,Y1=$E(Y1,1,($X-PCX)-1)_$C(X1)_$E(Y1,($X-PCX)+1,299)
 RCAR S RET="RCAR" R *YG G HELP:YG=8,MODFLD:YG=9,CHAMP:YG=7,DEL:YG=127,ABEND:YG<2,FIN:YG=6,CHAMP:YG=13 I YG<32 D ^%VSQUEAK G RCAR
- W $C(YG) S OY1=Y1,Y1=$E(Y1,1,($X-PCX)-1)_$C(YG)_$E(Y1,($X-PCX)+1,299) G RCAR:$L(Y1)<76 S YG=13 G CHAMP
+ ;HL002 W $C(YG) S OY1=Y1,Y1=$E(Y1,1,($X-PCX)-1)_$C(YG)_$E(Y1,($X-PCX)+1,299) G RCAR:$L(Y1)<76 S YG=13 G CHAMP
+ S OY1=Y1,Y1=$E(Y1,1,($X-PCX)-1)_$C(YG)_$E(Y1,($X-PCX)+1,299) G RCAR:$L(Y1)<76 S YG=13 G CHAMP
 RFLD 
  ;;NONDTM
  

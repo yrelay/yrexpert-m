@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 29/10/17 ! La partition principale est YXP ou %DIR        !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -232,7 +232,9 @@ RETANRES
  
  
  D M("validation et comprehension totem")
- U 0 S ^TABIDENT($I,"%UCI")="MOZ",^TABIDENT($I)=""
+ ;HL002 U 0 S ^TABIDENT($I,"%UCI")="MOZ",^TABIDENT($I)=""
+ D INT^%DIR
+ U 0 S ^TABIDENT($I,"%UCI")=%DIR,^TABIDENT($I)=""
  S ^TEST("GEST","ETQ")="RETANTOT",^TEST("GEST","MES")="validation totem"
  D ^TOV2,^TOV3,^%ABV4,^TOV6,^TOV51,^TOV52,^%ABV4,^TOV6,^TOV51,^TOV52
 RETANTOT 

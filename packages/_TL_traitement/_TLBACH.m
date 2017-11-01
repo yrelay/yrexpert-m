@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 01/11/17 ! %GTM-E-FALLINTOFLST, Fall-through to a label with formallist is not allowed !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -68,7 +68,8 @@ PROREG
  
  
  I (MODAF=2)&(EXEC'=0) G TSTMOD
- D ^%VZATOU(.CTRLA,"",0,0) I CTRLA'=1 G TSTMOD
+ ;HL002 D ^%VZATOU(.CTRLA,"",0,0) I CTRLA'=1 G TSTMOD
+ D VVZATOU^%VZATOU(.CTRLA,"",0,0) I CTRLA'=1 G TSTMOD
  
  I (MODAF=2)!(MODAF=3) S:EXEC'=4 EXEC=1 G TSTMOD
  

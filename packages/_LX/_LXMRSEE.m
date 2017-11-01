@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 01/11/17 ! %GTM-E-FALLINTOFLST, Fall-through to a label with formallist is not allowed !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -78,7 +78,8 @@ LEXMRSEE ;
 SUIT S PAG="Page "_PAGE_"/"_NBPAG
  S DX=40-($L(PAG)\2),DY=6 X XY W PAG
  D POCLEPA^%VVIDEO W $$^%QZCHW("?:Repere, CTRLE:acces aux mots, CTRLA:Abandon, +, -, page")
- D ^%VZATOU(.Y1,.%F,"",0)
+ ;HL002 D ^%VZATOU(.Y1,.%F,"",0)
+ D VVZATOU^%VZATOU(.Y1,.%F,"",0)
  G 1:Y1=1,6:Y1=6,65:Y1=5 S Y1=$C(Y1) G ORD:Y1="?",61:(Y1="+")!(Y1="="),45:Y1="-",PAGE:Y1="P",SUIT
 SINON G:$A(Y1)<32 SUIT S PCH=Y1 D TO^%QZNBN1 G:'(ISNUM) SUIT S NPAG=Y1 G AFF
 1 G END
@@ -104,7 +105,8 @@ ORD S STOP=0,DX=0,DY=5 D CLEBAS^%VVIDEO S PG="" F I=1:1 S PG=$O(^POSFUL($I,PG)) 
 ECORD S DD=^POSFUL($I,PG),FF=$P(DD,"^",2),DD=$P(DD,"^",1)
  W !,"Page ",$S(PG<10:" ",1:""),PG,?9,DD,!,?9,FF D:$Y'<21 ALOR
  Q
-ALOR D POCLEPA^%VVIDEO W $$^%QZCHW("[RETURN] pour continuer, CTRLA pour abandonner ") D ^%VZATOU(.Y1,.%F,"",0)
+;HL002 ALOR D POCLEPA^%VVIDEO W $$^%QZCHW("[RETURN] pour continuer, CTRLA pour abandonner ") D ^%VZATOU(.Y1,.%F,"",0)
+ALOR D POCLEPA^%VVIDEO W $$^%QZCHW("[RETURN] pour continuer, CTRLA pour abandonner ") D VVZATOU^%VZATOU(.Y1,.%F,"",0)
  G:(Y1'=13)&(Y1'=1) ALOR S:Y1=1 STOP=1
  S DX=0,DY=5 D CLEBAS^%VVIDEO X XY Q
 MAJ Q:'($D(^POSENR($I)))  Q:'($D(^VALPAR($I)))

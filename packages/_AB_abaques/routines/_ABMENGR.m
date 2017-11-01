@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 01/11/17 ! Si la globale ^["YXP"]STRUCT n'existe pas      !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -76,7 +76,11 @@ DEB K ^PILABAC($J),^COLDUP($I),^PLUCOL($I)
  S (DXD,DX)=$X D ^%VLEC G:CTRLE=1 LIST G:(CTRLA=1)!((CTRLF=1)!(Y1="")) FIN
  S NOMG=Y1 I NOMG="?" D LISTE^%ABDELGR G DEB
  S PARA=NOMG D ^%QZCHBT
- S NOMG=PARA,DX=DXD,DY=$Y X XY W NOMG G:$D(^[QUCOM]STRUCT(NOMG)) UVW
+ S NOMG=PARA,DX=DXD,DY=$Y X XY W NOMG
+ S $ZT="G ERRSTRUCT",NUL=^[QUCOM]STRUCT(NOMG) ;HL002
+ ;HL002 S NOMG=PARA,DX=DXD,DY=$Y X XY W NOMG G:$D(^[QUCOM]STRUCT(NOMG)) UVW
+ S $ZT="" G:$D(^[QUCOM]STRUCT(NOMG)) UVW
+ERRSTRUCT S $ZT=""
  I '($D(^[QU]STRUCT(NOMG))) D ^%ABGRABR G:'($D(^[QUI]TOLEX(NOMG))) DEB
 UVW S CONT=1 D CONT^%ABSUISF G:CONT=0 DEB
  S NOMGC=NOMG_"/COMMENT" K ^CUMUL($I,NOMG)

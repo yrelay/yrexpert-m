@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 01/11/17 ! %GTM-E-FALLINTOFLST, Fall-through to a label with formallist is not allowed !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -71,7 +71,8 @@
 LEC S %PYY=$Y,%PXX=$X,%V=$S(%PYY<PSEP:"P",1:"R"),%D=$S(%V="P":%DH,1:%DB),%D1=$S(%V="P":%PH,1:%PB),%D3=$S(%V="P":"%DH",1:"%DB")
  I '($D(ATT)) S ATT=30
  S %F="",X1=""
-LEC2 D ^%VZATOU(.X1,.%F,5,1)
+;HL002 LEC2 D ^%VZATOU(.X1,.%F,5,1)
+LEC2 D VVZATOU^%VZATOU(.X1,.%F,5,0)
  I (X1="")&(%F="") D HEURE G LEC2
  
  I %F'="" G @%F

@@ -56,6 +56,7 @@
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
 ;! HL002 ! HL     ! 28/01/07 ! Convertion $ZDEV : DTM -> GTM                  !
+;! HL005 ! HL     ! 09/11/17 ! Convertion $XECUTE : DTM -> GTM                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -64,8 +65,8 @@
 CLEAR Q
  D ^%mzclear Q
  
- ;HL002 COMPILE(PHRASE) Q $XECUTE(PHRASE)
-COMPILE(PHRASE) Q 0
+;HL005 COMPILE(PHRASE) Q $XECUTE(PHRASE)
+COMPILE(PHRASE) Q PHRASE
  
 OPEN(PORT,LARG,TIMEOUT) 
  I PORT="" S PORT=$I

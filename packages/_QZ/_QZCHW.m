@@ -71,7 +71,6 @@ INITREM N %LG
  S ^REMANENCE($J,"LG")=^REMANENCE($J,"LG")_" S:$D(^COMMENT("""_%LG_""",""PG"",M)) M=^COMMENT("""_%LG_""",""PG"",M)"
  
 I2 
- Q  ;HL
  S ^REMANENCE($J,"LG")=$$COMPILE^%SYSUTI1(^REMANENCE($J,"LG"))
  Q
  

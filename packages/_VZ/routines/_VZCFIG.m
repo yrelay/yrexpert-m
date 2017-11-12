@@ -56,7 +56,6 @@
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
 ;! HL002 ! HL     ! 18/02/07 ! Remplacer ZL par : exemple CADRE+0^TOEXPGET    !
-;! HL003 ! HL     ! 15/07/12 ! Nettoyer la zone d'affichage                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -68,7 +67,7 @@ ZGSTFIG ;HL Creer la globale ^TBFIG et dessine le graphe.
  
  K %FG,^TBI($J)
  ;HL002 S %FG(1)="ZL @%FG(""R"") S %FG(""I"")=1 F %FG(""U"")=0:1 S %FG(""L"")=$P($T(@%FG(""AD"")+%FG(""U"")),"";;"",2) Q:%FG(""L"")=""""  X %FG(2)"
- S %FG(1)="S %FG(""I"")=1 F %FG(""U"")=0:1 S %FG(""L"")=$P($T(@%FG(""AD"")+%FG(""U"")^@%FG(""R"")),"";;"",2) Q:%FG(""L"")=""""  X %FG(2)"
+ S %FG(1)="S %FG(""I"")=1 F %U=0:1 S %FG(""U"")=%U S %FG(""L"")=$P($T(@(%FG(""AD"")_""+""_%FG(""U"")_""^""_%FG(""R""))),"";;"",2) Q:%FG(""L"")=""""  X %FG(2)"
  S %FG(2)="F %FG(""V"")=1:1 S %FG(""K"")=$P(%FG(""L""),""/"",%FG(""V"")) Q:%FG(""K"")=""""  S ^TBI($J,%FG(""I""))=%FG(""K""),%FG(""I"")=%FG(""I"")+1"
  S %FG("R")=-1
  F %FG("W")=1:1 S %FG("R")=$N(TBFIG(%FG("R"))) Q:%FG("R")=-1  S %FG("ID")=-1 F %FG("X")=1:1 S %FG("ID")=$N(TBFIG(%FG("R"),%FG("ID"))) Q:%FG("ID")=-1  S %FG("AD")=TBFIG(%FG("R"),%FG("ID")) K ^TBI($J) X %FG(1) D KSP
@@ -89,4 +88,5 @@ DES
  D CLETEX^%VVIDEO ;HL003
  N NU,%U O $I S NU=^TBFIG($J,%FIG) F %U=1:1:NU X XY W ^TBFIG($J,%FIG,%U)
  Q
+
 

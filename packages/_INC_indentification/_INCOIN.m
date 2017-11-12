@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 11/11/17 ! si WHOIS n'existe pas                          !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -68,7 +68,8 @@ CNX(PREF)
  S WHDEF=^INCONNE("DEFAUT","WHOIS")
  Q:($D(^INCONNE("CNY",WHDEF,"LK",PREF,"R"))#10)=1 ^INCONNE("CNY",WHDEF,"LK",PREF,"R")
  Q 0
-OKR(PREF) 
+OKR(PREF)
+ S:'$D(WHOIS) WHOIS=^TABIDENT("DMO","WHOIS")="DMO" ;HL002
  I $D(^INCONNE("CNY",WHOIS)) Q:($D(^INCONNE("CNY",WHOIS,"LK",PREF,"U"))#10)=1 ^INCONNE("CNY",WHOIS,"LK",PREF,"U") Q 0
  I ($D(^INCONNE("DEFAUT","WHOIS"))#10)=0 Q 0
  N WHDEF

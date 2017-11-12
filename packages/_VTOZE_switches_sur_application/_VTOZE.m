@@ -125,14 +125,13 @@ TABTSPE
  S MNE=$P(LI,"/",1),COM=$P(LI,"/",3)
  S TBT=$S(PR="":"^TOZE",1:"^TOZE("_PR_")")
  S COND="S OK="_$S(COND'="":COND,1:1)
- ;HL2 S $ZT="ERRCOND^%VTOZE"
- ;HL2 X COND Q:'(OK)
+ S $ZT="ERRCOND^%VTOZE"
+ X COND Q:'(OK)
  F IT="MNE","PR","DEF","COM","TBT" S ^TBTOZE($J,MNE,IT)=@IT
  S LI2=$P(LI1,"/",4,999),NIT=$L(LI2,"/") F IT=1:1:NIT S ^TBTOZE($J,MNE,"VAL",IT)=$P(LI2,"/",IT)
  Q
 ERRCOND 
- ;HL S $ZT="" Q
- Q  ;HL
+ S $ZT="" Q
  
 ON S ^TOZE($I,"A")="AFF^TOERRIMP",^TOZE($I,"C")="COND^TOERRIMP",^TOZE($I,"B")="^TOERRABA"
  G FIN

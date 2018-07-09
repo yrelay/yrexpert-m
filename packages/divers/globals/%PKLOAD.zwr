@@ -1,4 +1,4 @@
-GT.M MUPIP EXTRACT
+GT.M MUPIP EXTRACT UTF-8
 12-JAN-2017  13:54:13 ZWR
 ^%PKLOAD="S %R=@GLO@(""V""),Y=@GLO@(""H"")_""\""_@GLO@(""FL"")_""WCY\2\""_@GLO_""\\"" X ^%PKLOAD(MODE)"
 ^%PKLOAD(0)="X ^%PKLOAD(""LIBELLE""),^%PKLOAD(1,0) S X="""" F %X=1:1 S X=$O(@GLOCH@(X)) Q:X=""""  S %X=X+NBC,Y(%X)=@GLOCH@(X),VAL(X)=Y(%X),Y(%X)=Y(%X)_$J("""",L-$L(Y(%X)))"

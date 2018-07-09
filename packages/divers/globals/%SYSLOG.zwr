@@ -1,4 +1,4 @@
-GT.M MUPIP EXTRACT
+GT.M MUPIP EXTRACT UTF-8
 12-JAN-2017  13:54:13 ZWR
 ^%SYSLOG("Data")="10"
 ^%SYSLOG("Data",1)="SuperServerUnable to start slave serverp%SYS2004-11-21 15:09:12.555%cmtP"

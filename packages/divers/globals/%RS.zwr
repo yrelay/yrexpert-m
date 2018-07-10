@@ -1,4 +1,4 @@
-GT.M MUPIP EXTRACT UTF-8
+GT.M MUPIP EXTRACT
 12-JAN-2017  13:54:13 ZWR
 ^%RS(1)="N (%BG,%EN) S %POP=0 R !,""Begin: "",%T Q:%T=""""  X ^%(""TAG"") Q:%L=""""  S %K=$J K ^UPS(%K) S %BG=%T X ^%RS(2)"
 ^%RS(2)="R ""   End: "",%EN S %A=$S(%EN="""":3,1:20) X ^%RS(%A)"

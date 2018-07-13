@@ -1,4 +1,4 @@
-GT.M MUPIP EXTRACT
+GT.M MUPIP EXTRACT UTF-8
 12-JAN-2017  13:54:13 ZWR
 ^%ENVIRON("ANADEX","CADRE")="D @(""CADRE""_$C(94)_""%EDCI350"")^TRACE LE CADRE DE LA FENETRE^^^^^^^^^"
 ^%ENVIRON("ANADEX","CALCUL.COEFFICIENT")="D @($C(94)_""%EDCOEF2"")^calcul du coefficient de deplacement pour imprimer un texte libre^^^^^^^^^"

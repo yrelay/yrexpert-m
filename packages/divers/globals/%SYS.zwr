@@ -1,4 +1,4 @@
-GT.M MUPIP EXTRACT
+GT.M MUPIP EXTRACT UTF-8
 12-JAN-2017  13:54:13 ZWR
 ^%SYS("BACKUPLIST","CumulativeIncrementalDBList")="CumulativeIncrementalDBList^2^^^1^Cumulative and Incremental backup of all databases that are in the backup database list.^^^^1"
 ^%SYS("BACKUPLIST","FullAllDatabases")="FullAllDatabases^0^^^1^Full backup of ALL databases, whether or not they are in the backup database list.^^^^1"

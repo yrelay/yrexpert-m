@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -133,7 +133,7 @@ EVAL(VA,REG)
  S VAL2=$P(REG," ",4)
  Q $$EVAL2(X,OP,VAL1,VAL2,NEG)
  
-EV1() S $ZT="EV10"
+EV1() S $ZT="G EV10"
  S @("BON="_X_OP_VAL1),$ZT="" Q BON
 EV10 S $ZT="" Q 0
  
@@ -148,7 +148,7 @@ EVAL2(X,OP,VAL1,VAL2,NEG)
  S BON=$$EV2
  S:NEG=1 BON='(BON)
  Q BON
-EV2() S $ZT="EV20"
+EV2() S $ZT="G EV20"
  S RES="("_X_G_VAL1_")&("_X_D_VAL2_")"
  S @("BON="_RES)
  S $ZT="" Q BON

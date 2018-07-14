@@ -65,7 +65,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 14/07/18 ! erreur %GTM-W-BLKTOODEEP                       !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -128,9 +128,12 @@ LEC R *X1:^TOZE($I,"ATTENTE")
 DEL I (($X-1)<PCX)&(PCY=$Y) D ^%VSQUEAK G LEC
  S ADX=$X-1,ADY=$Y,DX=((PCX+$L(YG))#80)-1,DY=((PCX+$L(YG))\80)+PCY S:DX<0 DX=79,DY=DY-1 X XY W " " S LPG=(((ADY-PCY)*80)+ADX)-PCX,PD=$E(YG,LPG+2,599),PG=$E(YG,1,LPG),YG=PG_PD,DX=PCX,DY=PCY X XY W YG S DX=ADX,DY=ADY S:ADX<0 DX=79,DY=DY-1 X XY G LEC
 ESC ;;NONDTM
- . R XG2,*XG3
- . G REFUS:(XG2=27)!(XG3=27) G:(((X1'=27)!(XG2'=91))!(XG3'>64))!(XG3'<69) REFUS
- . G DEL
+ ;HL002 . R XG2,*XG3
+ ;HL002 . G REFUS:(XG2=27)!(XG3=27) G:(((X1'=27)!(XG2'=91))!(XG3'>64))!(XG3'<69) REFUS
+ ;HL002 . G DEL
+ R XG2,*XG3
+ G REFUS:(XG2=27)!(XG3=27) G:(((X1'=27)!(XG2'=91))!(XG3'>64))!(XG3'<69) REFUS
+ G DEL
  ;;FINNONDTM
  ;;DTM
  G:MODTM REFUS

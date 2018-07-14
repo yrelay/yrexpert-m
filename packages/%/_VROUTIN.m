@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -65,9 +65,9 @@ EXIROU(ROUT)
  N X,RINI,RET
  S RET=1
  S RINI=$P($ZPOS,"^",2)
- ;HL2 S $ZT="ERREXI^%VROUTIN"
+ ;HL2 S $ZT="G ERREXI^%VROUTIN"
  ;HL2 S X="ZR  ZL @ROUT ZR  ZL @RINI"
- S $ZT="G ERREXI"
+ S $ZT="G ERREXI^%VROUTIN"
  S X="ZL ""_""_$P(ROUT,""%"",2)"
  X X
  S $ZT=""

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -109,7 +109,7 @@ QSXCB(OKB,OKA,INTEG,VISU)
  S:LIB'="" @ERROR@(LIB)=""
  Q
  
-B0 S $ZT="ERR^%QSXCB"
+B0 S $ZT="G ERR^%QSXCB"
  S BASE=""
  F I=0:0 S BASE=$O(@BASES@(BASE)) Q:BASE=""  D B1
  S BASE=""
@@ -134,7 +134,7 @@ B2 D ATT^%QSX(RESLIEN,BASE,LIEN)
  I (TYPEL=3)&('($D(VU(BASED,BASE)))) S VU(BASE,BASED)="",VU(BASED,BASE)="",@LL@(BASE,LIEN,BASED)=TYPEL Q
  Q
  
-A S $ZT="ERR^%QSXCB"
+A S $ZT="G ERR^%QSXCB"
  S BASE=""
  F I=0:0 S BASE=$O(@BASES@(BASE)) Q:BASE=""  D A1
  S $ZT=""

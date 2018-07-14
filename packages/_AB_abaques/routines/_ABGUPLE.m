@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -75,7 +75,7 @@ BEG S %TREFC="" Q:%PR=1
 REFUS S ACCEPT=0,STOP="F" G END
 BRAQ S ATEST=^[QUW]INTERGRI(NUGR,B(%PR))
  I ^VPAR($I,PARA)["," D GUPLEB G COND
- S $ZT="REFUS",%INT=^VPAR($I,PARA),@("%CONDIT="_ATEST)
+ S $ZT="G REFUS",%INT=^VPAR($I,PARA),@("%CONDIT="_ATEST)
 COND I %CONDIT=1 S ACCEPT=1 G SUIT
  G REFUS
 SUIT S ^GRIL($I,PARA)=B(%PR) I %PR'=(%NBPAR+1) G END
@@ -85,7 +85,7 @@ SUIT S ^GRIL($I,PARA)=B(%PR) I %PR'=(%NBPAR+1) G END
 END Q
 GUPLEB D T0 G:%SCPR="N" T1
  S %BI=%VMIN,%BS=%VMAX,@("%CONDIT="_ATEST) G FIN1
-T1 S $ZT="ERR" F %INT=%VMIN,%VMAX S @("%CONDIT="_ATEST) G:%CONDIT=0 FIN1
+T1 S $ZT="G ERR" F %INT=%VMIN,%VMAX S @("%CONDIT="_ATEST) G:%CONDIT=0 FIN1
  G FIN1
 T0 S %VCOMP=^VPAR($I,PARA) D INTE
  I %VMIN="" S %VMIN=-99999999

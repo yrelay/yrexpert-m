@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -77,7 +77,7 @@
  S NUMCD=""
 F10 S NUMCD=$O(@GCOMP@("P",NUMCD))
  Q:NUMCD="" 0
- S $ZT="F25^%QWACR4"
+ S $ZT="G F25^%QWACR4"
 F20 I @(@GCOMP@("P",NUMCD,"E"))  S $ZT="" G G1
  S $ZT="" G F10
 F25 S ERR=$ZE,$ZT=""
@@ -86,7 +86,7 @@ F25 S ERR=$ZE,$ZT=""
  
 G1 
  S LIEN=@GCOMP@("L")
- S $ZT="G1ER^%QWACR4",$ZE=""
+ S $ZT="G G1ER^%QWACR4",$ZE=""
 G1AG S @("DEST="_@GCOMP@("I","E"))
 G1ER S ERR=$ZE,$ZT="",$ZE=""
  Q:$E(ERR,1,6)="<UNDEF" 0 G:ERR'="" G1AG
@@ -95,7 +95,7 @@ G1ER S ERR=$ZE,$ZT="",$ZE=""
  
  
  I '($D(@GCOMP@("O","E"))) S ORD=DEST G CREAT
- S $ZT="K25^%QWACR4",ERR=""
+ S $ZT="G K25^%QWACR4",ERR=""
 K12 S @("ORD="_@GCOMP@("O","E"))
  G CREAT
 K25 S ERR=$ZE,$ZT="" G:$E(ERR,1,6)="<UNDEF" I1 G K12
@@ -113,7 +113,7 @@ CREAT
 H1 S NUMAC=""
 H10 S NUMAC=$O(@GCOMP@("R",NUMAC)) G:NUMAC="" I1
  S ACRES=$O(@GCOMP@("R",NUMAC,""))
- S $ZT="H25^%QWACR4"
+ S $ZT="G H25^%QWACR4"
 H20 S @("VAL="_@GCOMP@("R",NUMAC,ACRES,"E"))
 H25 S ERR=$ZE,$ZT="",$ZE="" G:$E(ERR,1,6)="<UNDEF" H10 G:ERR'="" H20
  I $$AFFECT^%QWSTOE(4,NR,NOUV,$$ONE^%QSGEL3("LIEN"),NUML,ACRES,1,VAL) S NOUV=0
@@ -124,7 +124,7 @@ H25 S ERR=$ZE,$ZT="",$ZE="" G:$E(ERR,1,6)="<UNDEF" H10 G:ERR'="" H20
 I1 S NUMAC=""
 I10 S NUMAC=$O(@GCOMP@("RL",NUMAC)) G:NUMAC="" FIN
  S ACRES=$O(@GCOMP@("RL",NUMAC,""))
- S $ZT="I25^%QWACR4"
+ S $ZT="G I25^%QWACR4"
 I20 S @("VAL="_@GCOMP@("RL",NUMAC,ACRES,"E"))
 I25 S ERR=$ZE,$ZT="",$ZE="" G:$E(ERR,1,6)="<UNDEF" H10 G:ERR'="" I20
  I $$AFFECT^%QWSTOE(4,NR,NOUV,RDEST,DEST,ACRES,1,VAL) S NOUV=0

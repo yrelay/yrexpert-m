@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 26/08/12 ! ZN n'existe par pour GTM                       !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -159,7 +159,7 @@ CRELIS(BASE)
  Q LIS
  
 OKPAR(PAR) 
- S $ZT="NOKPAR^%UTSTCD2"
+ S $ZT="G NOKPAR^%UTSTCD2"
  ;HL002 ZN PAR
  S ZN=$$ZGBLDIR^%GTM(PCOUR)
  ;HL002 S $ZT="" ZN $$PCONF^%INCASTS("PROG") Q 1

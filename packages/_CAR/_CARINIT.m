@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -101,7 +101,7 @@ FIN S @GLOBAT=0 Q
  
 STOP 
  N GLOBAT
- S $ZT="ERRSTP"
+ S $ZT="G ERRSTP"
  S GLOBAT="^CARGBA"
  I @GLOBAT@("SUPER") D STOPSUP^%CARJOBE
  D STOPSCH^%CARJOBE

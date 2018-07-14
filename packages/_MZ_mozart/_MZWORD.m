@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -94,7 +94,7 @@ STAT1 S %FIG="MOZ" X XY D BLD^%VVIDEO,DES^%VZCFIG,NORM^%VVIDEO,AFGA(PGM) S DX=66
 0 ;;D ^%VTIME D ^%MZS02(PGM) D FIN^%VTIME S ^MOZDUR($J)=DUREE 
 1 ;;D ^%MZMAJ(PGM) 
  
-E S DX=0,DY=EDSL+3 X XY D ^%VSQUEAK W "?File not found ",$ZE X XL S $ZT="E^%MZWORD",PGM="" D FILE,LOAD G ED
+E S DX=0,DY=EDSL+3 X XY D ^%VSQUEAK W "?File not found ",$ZE X XL S $ZT="G E^%MZWORD",PGM="" D FILE,LOAD G ED
 AFGA(M) 
  S M=M_" ("_$$GE^%MZQS_")",BL=$J("",(42-$L(M))\2)_M,BL=BL_$J("",42-$L(BL))
  W $$XY^%VVIDEO1(0,0),$$BLD^%VVIDEO1,$$REV^%VVIDEO1,$$^%VCADFLD($J("",18)_"Gamme"_$J("",19)_BL,23,21,22,65),$$NORM^%VVIDEO1 Q

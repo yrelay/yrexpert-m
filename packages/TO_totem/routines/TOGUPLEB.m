@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -64,7 +64,7 @@ TOGUPLEB ;
  
  D T0 G:%SCPR="N" T1
  S %BI=%VMIN,%BS=%VMAX,@("%CONDIT="_ATEST) G FIN
-T1 S $ZT="ERR" F %INT=%VMIN,%VMAX S @("%CONDIT="_ATEST) G:%CONDIT=0 FIN
+T1 S $ZT="G ERR" F %INT=%VMIN,%VMAX S @("%CONDIT="_ATEST) G:%CONDIT=0 FIN
  G FIN
 T0 S %VCOMP=^VPAR($I,PARA) D ^TO42INTE
  I %VMIN="" S %VMIN=-99999999

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -66,8 +66,8 @@ TOIMGBIS ;
  S DD=-1 F UU=0:0 S DD=$N(^[QUI]TBNOM(NUFA,DD)) G:DD=-1 FIN S YA=$P(^[QUI]TBNOM(NUFA,DD),"^",1) I $D(^[QUI]IMPBIS(YA)) D:$D(TBMEM(DD)) ^TORESV D LOPAR D:$D(TBMEM(DD)) ^TOTBMEM
 LOPAR S S=DD,NTRI=$O(^[QUI]IMPBIS(YA,NTRI)) G:NTRI="" FIN
  S PRX=^[QUI]IMPBIS(YA,NTRI),SOURCE=$E(PRX,2,$L(PRX)-1) G:($P(PRX,",",2)=PARA)&(CONDIT=1) LOPAR D:($P(PRX,",",2)'=PARA)&$D(^[QUI]UNDEFCI(PARA)) AVERTI S ^[QUI]UNDEFCI($P(PRX,",",2))=1 D TESCOND G LOPAR
-TESCOND S $ZT="COND^TOERRIMP",PARA=$P(PRX,",",2),PARAP=$P(PARA,"""",2),ATEST="^[QUI]CIMPLICI"_PRX,@("CONDIT="_@ATEST) Q:CONDIT=0  K ^[QUI]UNDEFCI(PARA)
- S $ZT="AFF^TOERRIMP",^[QUI]RAISON(NUFA,S,PARAP)="^[QUI]IMPLICI"_PRX,AFFECT="^[QUI]AIMPLICI"_PRX,@("^V($I,YA,PARAP)="_@AFFECT),^[QUI]TVPAR(NUFA,S,PARAP)=^V($I,YA,PARAP) Q
+TESCOND S $ZT="G COND^TOERRIMP",PARA=$P(PRX,",",2),PARAP=$P(PARA,"""",2),ATEST="^[QUI]CIMPLICI"_PRX,@("CONDIT="_@ATEST) Q:CONDIT=0  K ^[QUI]UNDEFCI(PARA)
+ S $ZT="G AFF^TOERRIMP",^[QUI]RAISON(NUFA,S,PARAP)="^[QUI]IMPLICI"_PRX,AFFECT="^[QUI]AIMPLICI"_PRX,@("^V($I,YA,PARAP)="_@AFFECT),^[QUI]TVPAR(NUFA,S,PARAP)=^V($I,YA,PARAP) Q
 FIN K ^[QUI]UNDEFCI Q
 AVERTI D POCLEPA^%VVIDEO,^%VSQUEAK W "* ",PARA,$$^%QZCHW(" * non defini, nous aurons peut-etre des problemes") H 3 Q
 

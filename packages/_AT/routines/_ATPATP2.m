@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -85,7 +85,7 @@ BCLAC S %VNI(%VNGA,5)=%VNI(%VNGA,5)+1
  I $E(%VNG(5),1,2)="C|" G APPATN
  
  I $E(%VNG(5),1,2)="X|" S %VNG(5)=$E(%VNG(5),3,$L(%VNG(5)))
- S $ZT="ERRAC^%ATPATP2"
+ S $ZT="G ERRAC^%ATPATP2"
  X %VNG(5)
  S $ZT=""
  G BCLAC
@@ -135,7 +135,7 @@ EVALARC(OBJET,OB,RESUL)
  S %VNGA=1,%VNI(%VNGA,1)=OBJET-1,%VNI(%VNGA,6)=OB-1
  S %VNI(%VNGA,3)="^[QUI]RQSGLO(""ATN"","""_NOMATN_""")"
 TRANSIT 
- S $ZT="ERRCOND^%ATPATP2"
+ S $ZT="G ERRCOND^%ATPATP2"
  S %VNI(%VNGA,5)=0
 BCLCND S %VNI(%VNGA,5)=%VNI(%VNGA,5)+1
  G:'($D(@%VNI(%VNGA,3)@("T",%VNI(%VNGA,1),%VNI(%VNGA,6),%VNI(%VNGA,5)))) OKTRA

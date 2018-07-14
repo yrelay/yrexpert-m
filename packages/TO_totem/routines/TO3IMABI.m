@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -85,10 +85,10 @@ AVERTI D POCLEPA^%VVIDEO,^%VSQUEAK W "* ",PARA," * non defini, nous aurons peut-
 SIFON S SIF=0 Q:@IMT("AFFECT")'["$"  S CONTAF=@IMT("AFFECT") G:CONTAF'["$$" FIN S SIF=1,CONTAF=$S($E(CONTAF,1)="(":$E(CONTAF,2,$L(CONTAF)-1),1:CONTAF)
  S ROUTI="^"_$E($P(CONTAF,"/",1),3,299),EXPFONC=CONTAF D @ROUTI S IMT("AFFECT")="%RESUL",%RESUL="%RESULTAT"
  K CONTAF,EXPFONC,ROUTI Q
-ORD S $ZT="FORD",^ORDEVAL($I,TWREF,MSS,@^CPTPAR(2))=%POR_"^^"_^V($I,YA,%POR)
+ORD S $ZT="G FORD",^ORDEVAL($I,TWREF,MSS,@^CPTPAR(2))=%POR_"^^"_^V($I,YA,%POR)
 FORD Q
-INCR S $ZT="FORD",@^CPTPAR(2)=@^CPTPAR(2)+1 G FORD
-TRI S $ZT="FORD",^ORDEVAL($I,TWREF,MSS,@^CPTPAR(2))=%POR_"^"_IMT("NTRI")_"^"_^V($I,YA,%POR) G FORD
+INCR S $ZT="G FORD",@^CPTPAR(2)=@^CPTPAR(2)+1 G FORD
+TRI S $ZT="G FORD",^ORDEVAL($I,TWREF,MSS,@^CPTPAR(2))=%POR_"^"_IMT("NTRI")_"^"_^V($I,YA,%POR) G FORD
 TSDEF S IMT("NU")=1,IMT("TSDEF")=1,IMT("TDEF")="^INDEF($I,NUFA,TWREF,"_SOURCE_")",IMT("PND")=-1
  F IMT("UU")=0:0 S IMT("PND")=$N(@IMT("TDEF")@(IMT("PND"))) G:IMT("PND")=-1 FIN D TEST
  Q

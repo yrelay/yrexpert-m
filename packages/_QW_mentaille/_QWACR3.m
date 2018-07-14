@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -86,7 +86,7 @@ QWACR3(REP,IND,NR,DOM)
 F10 S NUMCD=$O(@GCOMP@("P",NUMCD))
  Q:NUMCD="" 0
  I $D(@GCOMP@("P",NUMCD,"LIE")) G F10
-F12 S $ZT="F25^%QWACR3",ERR="",$ZE=""
+F12 S $ZT="G F25^%QWACR3",ERR="",$ZE=""
 F20 I @(@GCOMP@("P",NUMCD,"E"))  S $ZT="" G F30
  S $ZT="" G F10
 F25 S ERR=$ZE,$ZT=""
@@ -100,10 +100,10 @@ G10 S NUMAC=$O(@GCOMP@("R",NUMAC)) Q:NUMAC="" 1-NOUV
  S ACRES=$O(@GCOMP@("R",NUMAC,""))
  
  
- S $ZT="G13^%QWACR3",$ZE=""
+ S $ZT="G G13^%QWACR3",$ZE=""
 G12 S @("ORD="_@GCOMP@("R",NUMAC,ACRES,"O"))
 G13 S ERR=$ZE,$ZT="",$ZE="" G:$E(ERR,1,6)="<UNDEF" G10 G:ERR'="" G12
- S $ZT="G25^%QWACR3"
+ S $ZT="G G25^%QWACR3"
  
 G20 S @("VAL="_@GCOMP@("R",NUMAC,ACRES,"E"))
  

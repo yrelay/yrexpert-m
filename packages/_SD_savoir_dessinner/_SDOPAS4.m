@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -71,7 +71,7 @@ SDOPASS ;
 UN(O,V) 
  N ERR
  S ERR=$$TEMP^%QZCHAD($P($ZPOS,"^",2),"ERREUR") K @(ERR)
- S $ZT="ERREUR^%SDOPAS4"
+ S $ZT="G ERREUR^%SDOPAS4"
  D EXT(O,V)
  G FIN
  
@@ -83,7 +83,7 @@ ALL
 LOOP1 S O=$O(^[QUI]GRAPHE2(O)) G:O="" FIN
  S V=""
 LOOP2 S V=$O(^[QUI]GRAPHE2(O,V)) G:V="" LOOP1
- S $ZT="ERREUR^%SDOPAS4"
+ S $ZT="G ERREUR^%SDOPAS4"
  D EXT(O,V)
  G LOOP2
  

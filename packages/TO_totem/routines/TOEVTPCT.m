@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -65,7 +65,7 @@ TOEVTPCT(ART,NUF,TW)
  S YA="$TC",OP=-1,TC("COUT")=0,TC("DURT")=0
 LOP S OP=$N(^[QUI]CARATPC(NUF,TW,OP)) G:OP=-1 FPP K ^V($I,YA) S PP=-1
 LPP S PP=$N(^[QUI]CARATPC(NUF,TW,OP,PP)) G:PP=-1 DUR S ^V($I,YA,PP)=^[QUI]CARATPC(NUF,TW,OP,PP) G LPP
-DUR S $ZT="ERR",TC("TYP")="DUR",@("TC(""VAL"")="_TC("DUR")),^[QUI]DUREE(NUF,TW,OP)=TC("VAL"),TC("DURT")=TC("DURT")+TC("VAL")
+DUR S $ZT="G ERR",TC("TYP")="DUR",@("TC(""VAL"")="_TC("DUR")),^[QUI]DUREE(NUF,TW,OP)=TC("VAL"),TC("DURT")=TC("DURT")+TC("VAL")
 COU S TC("TYP")="COU",@("TC(""VAL"")="_TC("COU")),^[QUI]COUT(NUF,TW,OP)=TC("VAL"),TC("COUT")=TC("COUT")+TC("VAL")
  G LOP
 FPP S ^[QUI]COUT(NUF,TW)=TC("COUT"),^[QUI]DUREE(NUF,TW)=TC("DURT")

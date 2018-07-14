@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 28/01/07 ! Convertion $ZDEV : DTM -> GTM                  !
 ;! HL005 ! HL     ! 09/11/17 ! Convertion $XECUTE : DTM -> GTM                !
 ;!-------!--------!----------!------------------------------------------------!
@@ -76,7 +76,7 @@ OPEN(PORT,LARG,TIMEOUT)
 LIREFIC(GLO,FIRST,FIC)
  N IOF,TIMEOUT,ERR,I,A,ST,STATUS
  S IOF=11,TIMEOUT=500
- S ERR="",$ZT="ERRFIC1"
+ S ERR="",$ZT="G ERRFIC1"
  ;HL002 O IOF:(MODE="R":FILE=FIC):TIMEOUT
  o FIC:(readonly:block=2048:record=2044:exception="G ERRFIC1"):0
  S IOF=FIC ;HL2
@@ -91,7 +91,7 @@ ERRFIC1
 ECRFIC(GLO,FIRST,FIC)
  N A,I,MAX,DATE,DATE1,B,J,IOF,TIMEOUT,ERR
  S DATE1=$$TEMPS^%QMDATE,B=0,IOF=11,TIMEOUT=1000
- S ERR="",$ZT="ERRFIC2"
+ S ERR="",$ZT="G ERRFIC2"
  ;HL002 O IOF:(MODE="W":FILE=FIC):TIMEOUT
  o FIC:(newversion:block=2048:record=2044:exception="ERRFIC2"):0
  S IOF=FIC ;HL2
@@ -115,7 +115,7 @@ OPENFILE(FIC,MODE,IORET,OKRET)
  ;HL002 S S IORET=$S(MODE="w":10,1:11)
  ;HL002 O IORET:(MODE=MODE:FILE=FIC):TIMEOUT E  G ERROPEN
  S IORET=FIC
- S $ZT="ERROPEN",TIMEOUT=10
+ S $ZT="G ERROPEN",TIMEOUT=10
  S MODE=$S(MODE="R":"R",MODE="r":"R",1:"W")
  I MODE="W" o IORET:(newversion:block=2048:record=2044:exception="G ERROPEN"):TIMEOUT
  I MODE="R" o IORET:(readonly:block=2048:record=2044:exception="G ERROPEN"):TIMEOUT

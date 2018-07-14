@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -62,7 +62,7 @@
 ;TOCOPYUS^INT^1^59547,74871^0
 TOCOPYUS ;
  
- K ^GLO($J) S $ZT="ERR",%T=-1 F %U=0:0 S T=$N(^TOLISGLO(%T)) Q:%T=-1  S %GLO=-1 F %UU=1:1 S %GLO=$N(^TOLISGLO(%T,%GLO)) Q:%GLO=-1  S ^GLO($J,$E(%GLO,1,8))=1
+ K ^GLO($J) S $ZT="G ERR",%T=-1 F %U=0:0 S T=$N(^TOLISGLO(%T)) Q:%T=-1  S %GLO=-1 F %UU=1:1 S %GLO=$N(^TOLISGLO(%T,%GLO)) Q:%GLO=-1  S ^GLO($J,$E(%GLO,1,8))=1
  S %GLO=-1 F %UU=1:1 S %GLO=$N(^GLO($J,%GLO)) Q:%GLO=-1  W !,$$^%QZCHW("Copie de "),%GLO S NOMTREE="^[QUI]"_%GLO D COPY
 FIN K %GLO,%GL,%K1,%UU,%VV Q
 COPY S %TAD="TRAIT^TOCOPYUS" D ^%QCAGTW Q

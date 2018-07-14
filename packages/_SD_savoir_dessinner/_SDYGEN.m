@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -121,7 +121,7 @@ ACT W !
  F I="^[QUI]SDSYMBO","^[QUI]SDSYMBT","^[QUI]SDSYMBC" D ^%QCAGLK(I)
  S NB=0,PREF="^%SDTX",PREF=$P(PREF,"^",2)
  S Y0="ZL @(PREF_1) S LIM=+$P($P($T(+1),"";;"",2),"";"",1),%N=+$P($P($T(+1),"";;"",2),"";"",2)"
- S $ZT="LOP"
+ S $ZT="G LOP"
  X Y0
  S X0="ZL @(PREF_I) F J=2:1 S LI=$T(+J) Q:LI=""""  S LI=$P(LI,"";;"",2,500),RF=$P(LI,"")="",1)_"")"",VL=$P(LI,"")="",2,500),@RF=VL,NB=NB+1 W ""*""",I=0 X Y0
 LOP S I=I+1 Q:I>LIM  X X0 G LOP

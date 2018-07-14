@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -64,7 +64,7 @@ GECOMPGR ;
  
  D ^%VGETSCR Q:'($D(^SC($J)))
 DEB S SCR="",%I=0 K ^LISTE($J) D ^%VID
-LDEB S $ZT="ERREUR^%VCOMPG2"
+LDEB S $ZT="G ERREUR^%VCOMPG2"
  S %I=%I+1,SCR=$O(^SC($J,SCR)) G FDEB:SCR="" W !,SCR D ^%VCOMPLI(SCR),COMP(SCR),^%VCURWAY(SCR),^%VCPPALL W:'(PB) " OK !" G LDEB
 FDEB D RERREUR^%VCOMPG2 Q
 ALL 

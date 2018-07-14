@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -88,7 +88,7 @@ READ S ER=$$R
  I $D(DEBUG),DEBUG=1 U 0 W !,"FIN ",FIN," ER ",ER," PB",PB," TMDER ",TMDER," FD ",FINDATA
  Q
  
-R() S $ZT="ERREUR^LKPHYERR"
+R() S $ZT="G ERREUR^LKPHYERR"
  U @PAR@("UNIT") R BLK S ZA=$ZA,@DATA@(VOL,BLKI)=BLK
  S $ZT="" Q 0
  

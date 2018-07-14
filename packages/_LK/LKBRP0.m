@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -117,7 +117,7 @@ LEC1
  
 OPEN(FILE,OK) 
  S OK=1
- S $ZT="BADOPEN^LKBRP0"
+ S $ZT="G BADOPEN^LKBRP0"
  I DTM S IO=19 O IO:("R":FILE):15
  E  S IO=FILE O IO
  S $ZT=""

@@ -54,14 +54,14 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
 ;TOCTREV^INT^1^59547,74871^0
 TOCTREV ;
- K CTR S CTR("NTRI")="",$ZT="ERR"
+ K CTR S CTR("NTRI")="",$ZT="G ERR"
 LOPAR S CTR("NTRI")=$O(^[QUI]CTOCTREV(YA,CTR("NTRI"))) G:CTR("NTRI")="" FIN
  S SOURCE=""""_YA_""","""_CTR("NTRI")_""""
 RETERR G:'($D(@("^[QUI]EXPRLONG("_SOURCE_",""C"")"))) NOLO S %TBL="^[QUI]EXPRLONG("_SOURCE_",""C"")" D GET^TOCHEXPR G:%ERR=1 YAERR S CONDIT=RES1 G ROLO

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -65,7 +65,7 @@ CIP F %1=0:0 S X=EMP D ^%ZGEIN W:X=EMP "Quit" Q:(X=EMP)!%C  W ! X X
  K %1 Q
 TIME S %1=T\60,%1=$S((%1\60)<10:0,1:EMP)_(%1\60)_":"_$S((%1#60)<10:0,1:EMP)_(%1#60)_":"_$S((T#60)<10:0,1:EMP)_(T#60) Q
 T S T=$P($H,",",2) D TIME S DX=68,DY=20 X XY W " ",$E(%1,1,5)," " K %1,T Q
-INIT K %STK S:'($D(%ED)#2) %ED=2 X ^%ZGE("C",+(%ED),6) S (EMP,%BF,%HLP,%C,%Q,%B0,%STK,%SCRN,%SEP,X)="",AP="""",U="^" S:($ZE=EMP)!($E($ZE)="<") $ZT="ER^%ZGEINSF" F %=1:1:RM S %SEP=%SEP_"*"
+INIT K %STK S:'($D(%ED)#2) %ED=2 X ^%ZGE("C",+(%ED),6) S (EMP,%BF,%HLP,%C,%Q,%B0,%STK,%SCRN,%SEP,X)="",AP="""",U="^" S:($ZE=EMP)!($E($ZE)="<") $ZT="G ER^%ZGEINSF" F %=1:1:RM S %SEP=%SEP_"*"
  Q
 SET S SET=1,%1=^%ZGE("C",+(%ED),3) F %2=1:1:6 S %BF(%2)=$P(%1,U,%2)
  

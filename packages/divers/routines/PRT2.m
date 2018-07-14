@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -96,7 +96,7 @@ PRT2(PORT,MACH,ORDRE,PAR1,PAR2,PAR3)
 LIREMETT(PT,ORDRE,A1,A2,A3,A4,A5,A6,A7) 
  N I,MAX,CODER,TIMOUT,J,VX,NOK,MAXI,RES
  S MAX=7,CODER="ES",TIMOUT=1
- S $ZT="ERRMETT^PRT2"
+ S $ZT="G ERRMETT^PRT2"
  O PT::TIMOUT E  G ERRMETT
  S $ZT=""
  

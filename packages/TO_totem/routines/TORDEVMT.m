@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -62,8 +62,8 @@
 ;TORDEVMT^INT^1^59547,74874^0
 TORDEVMT ;
  
- S $ZT="FIN",^ORDEVAL($I,TWREF,MSS,@^CPTPAR(2))=%POR_"^^"_^V($I,YA,%POR)
+ S $ZT="G FIN",^ORDEVAL($I,TWREF,MSS,@^CPTPAR(2))=%POR_"^^"_^V($I,YA,%POR)
 FIN Q
-INCR S $ZT="FIN",@^CPTPAR(2)=@^CPTPAR(2)+1 G FIN
-TRI S $ZT="FIN",^ORDEVAL($I,TWREF,MSS,@^CPTPAR(2))=%POR_"^"_NTRI_"^"_^V($I,YA,%POR) G FIN
+INCR S $ZT="G FIN",@^CPTPAR(2)=@^CPTPAR(2)+1 G FIN
+TRI S $ZT="G FIN",^ORDEVAL($I,TWREF,MSS,@^CPTPAR(2))=%POR_"^"_NTRI_"^"_^V($I,YA,%POR) G FIN
 

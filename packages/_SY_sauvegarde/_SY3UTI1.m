@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -133,7 +133,7 @@ OPEN(PORT,LARG,TIMEOUT)
 LIREFIC(GLO,FIRST,FIC) 
  N IOF,TIMEOUT,ERR,I,A,ST,STATUS
  S IOF=11,TIMEOUT=500
- S ERR="",$ZT="ERRFIC1"
+ S ERR="",$ZT="G ERRFIC1"
  O IOF:(MODE="R":FILE=FIC):TIMEOUT
  S $ZT=""
  F I=FIRST:1 U IOF R A S STATUS=$ZDEV("R",IOF),ST=$P(STATUS,",",1) Q:ST=3  Q:$A(A)=26  S @GLO@(I)=A
@@ -146,7 +146,7 @@ ERRFIC1
 ECRFIC(GLO,FIRST,FIC) 
  N A,I,MAX,DATE,DATE1,B,J,IOF,TIMEOUT,ERR
  S DATE1=$$TEMPS^%QMDATE,B=0,IOF=11,TIMEOUT=1000
- S ERR="",$ZT="ERRFIC2"
+ S ERR="",$ZT="G ERRFIC2"
  O IOF:(MODE="W":FILE=FIC):TIMEOUT
  S $ZT=""
  S J=$S(($D(@GLO@(FIRST))#10)=1:FIRST,1:$O(@GLO@(FIRST)))
@@ -176,7 +176,7 @@ BELL N DOLLARI
 OPENFILE(FIC,MODE,IORET,OKRET) 
  N TIMEOUT
  S IORET=$S(MODE="w":10,1:11)
- S $ZT="ERROPEN",TIMEOUT=10
+ S $ZT="G ERROPEN",TIMEOUT=10
  O IORET:(MODE=MODE:FILE=FIC):TIMEOUT E  G ERROPEN
  S $ZT="",OKRET=1 Q
 ERROPEN S $ZT="",OKRET=0 Q

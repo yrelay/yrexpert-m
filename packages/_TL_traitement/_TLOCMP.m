@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 19/08/12 ! Global variable undefined                      !
 ;! HL003 ! HL     ! 19/08/12 ! $XECUTE(VAL) la fonction n'existe pas          !
 ;!-------!--------!----------!------------------------------------------------!
@@ -89,7 +89,7 @@ COMPELEM(GLOLIG,GLOCOMP,VISER)
  K ^MESURE($J)
  S TSTDVT=0
  S PILE=$$TEMP^%SGUTIL,@PILE=0
- S $ZT="ERRCOMP^%TLOCMP"
+ S $ZT="G ERRCOMP^%TLOCMP"
  K @(GLOCOMP)
  I TSTDVT S (ICCOUR,IELCAL)=0 K ^TEST
  S LIG=""
@@ -126,7 +126,7 @@ ZXEC N IE,%IE,%F,VAL
 COMPIL(I,X) 
  N ICOMP,ZZZ
  Q:'(OKCOMPI)
- S $ZT="ERRCOMP"
+ S $ZT="G ERRCOMP"
  G:'($D(^[QUI]ANSA(X,"TEXTE"))) CMPI2
  G:^[QUI]ANSA(X,"TEXTE")="" CMPI2
  G:'($$ISVBSTD(^[QUI]ANSA(X,"TYPE"),^[QUI]ANSA(X,"TEXTE"))) CMPI1
@@ -162,7 +162,7 @@ ERRCOMP S ERR=$ZE,$ZT=""
 COMPADR(I,X) 
  N ICOMP,ZZZ Q:'(OKCOMPI)
  I '($D(^%COMPIL("A",^[QUI]ANSA(X,"TYPE")))) G CMPIERR
- S $ZT="ERRCOMP2"
+ S $ZT="G ERRCOMP2"
  F ICOMP=1:1 Q:'($D(^%COMPIL("A",^[QUI]ANSA(X,"TYPE"),ICOMP)))  X ^%COMPIL("A",^[QUI]ANSA(X,"TYPE"),ICOMP) Q
  S $ZT="" Q
 ERRCOMP2 S ERR=$ZE,$ZT=""
@@ -176,7 +176,7 @@ ERRCOMP2 S ERR=$ZE,$ZT=""
  
 COMPCHEM(I,X) Q:'(OKCOMPI)
  N ICOMP,ZZZ
- S $ZT="ERRCOMP3"
+ S $ZT="G ERRCOMP3"
  I '($D(^%COMPIL("H",^[QUI]ANSA(X,"TYPE")))) G CMPIERR
  F ICOMP=1:1 Q:'($D(^%COMPIL("H",^[QUI]ANSA(X,"TYPE"),ICOMP)))  X ^%COMPIL("H",^[QUI]ANSA(X,"TYPE"),ICOMP)
  S $ZT=""

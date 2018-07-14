@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -97,7 +97,7 @@ BCL S IFIL=$O(@FILE@(IFIL)) I IFIL="" K @(FILE) Q
  
 EVALCOND(FEN) 
  N RES
- S $ZT="ERREVAL"
+ S $ZT="G ERREVAL"
  S @("RES="_@CONDIT@("COND",FEN))
  S $ZT="" Q RES
 ERREVAL S $ZT="" Q 0
@@ -108,7 +108,7 @@ EVALCEL(CEL)
  N RES,ECRAS,ATTCR
  Q:'($D(@FORM@(CEL)))
  S ECRAS=@FORM@(CEL,"ECRAS")
- S $ZT="ERRCEL"
+ S $ZT="G ERRCEL"
  S @("RES="_@FORM@(CEL))
  S $ZT=""
  S:$$NUM^%QZNBN(RES) RES=$P((RES*1000)+$S(RES<0:-5E-1,1:5E-1),".")/1000
@@ -132,7 +132,7 @@ ERRCEL S $ZT="" Q 0
 EVALCEL2(CEL) 
  N RES
  Q:'($D(@FORM2@(CEL)))
- S $ZT="ERRCEL2"
+ S $ZT="G ERRCEL2"
  S @("RES="_@FORM2@(CEL))
  S $ZT=""
  S:$$NUM^%QZNBN(RES) RES=$P((RES*1000)+$S(RES<0:-5E-1,1:5E-1),".")/1000
@@ -157,7 +157,7 @@ VALCFC N DUR
  Q
  
 DUR() N C,CFC,RES Q:'($D(@FORM2@(CO))) ""
- S $ZT="ERRDUR^%QUBKKAU",@("RES="_@FORM2@(CO)),$ZT="" Q RES
+ S $ZT="G ERRDUR^%QUBKKAU",@("RES="_@FORM2@(CO)),$ZT="" Q RES
 ERRDUR S $ZT="" Q ""
  
 KILLCFC(FE) 

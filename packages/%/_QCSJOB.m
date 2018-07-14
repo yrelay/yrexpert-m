@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -112,7 +112,7 @@ JOB N
  S ROUT=$$CONCAS^%QZCHAD(STO,"ROUT")
  S ERR=$$CONCAS^%QZCHAD(STO,"ERR")
  S USR=$$CONCAS^%QZCHAD(STO,"USR")
- S $ZT="ERR^%QCSJOB"
+ S $ZT="G ERR^%QCSJOB"
  S NPAR=$O(@PARA@("")),ADR=""
  F I=0:0 Q:NPAR=""  D JOB1 S NPAR=$O(@PARA@(NPAR))
  S ROUTI=$$CONCAT^%QZCHAD(@ROUT,ADR)

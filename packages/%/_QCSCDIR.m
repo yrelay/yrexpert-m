@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 25/08/12 ! ZN n'existe pas dans DTM                       !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -86,7 +86,7 @@ EXIST2 N PROG,ZT,OK
  S PROG=$$PCONF^%INCASTO("PROG")
  
  I PROG="" D ^%VZEAVT($$^%QZCHW("La partition programme est indefinie : veuillez contacter YXP")) Q 0
- S $ZT="ERR^%QCSCDIR",OK=0
+ S $ZT="G ERR^%QCSCDIR",OK=0
  
  D ADR("",DIR)
  S OK=1

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -62,7 +62,7 @@
 ;TOOTPARE^INT^1^59547,74873^0
 TOOTPARE ;
  
- K TOP S $ZT="ERR",TOP("%5ERR")=0 K ^PAROUV($I),^PARFER($I),^PARCOUP($I) S REFUSE=0,TOP("%5L")=$L(EXP),^PARFER($I)=0,^PAROUV($I)=0
+ K TOP S $ZT="G ERR",TOP("%5ERR")=0 K ^PAROUV($I),^PARFER($I),^PARCOUP($I) S REFUSE=0,TOP("%5L")=$L(EXP),^PARFER($I)=0,^PAROUV($I)=0
  F TOP("%5PAR")="(",")" S TOP("%5POS")=1,TOP("%5TB")=$S(TOP("%5PAR")="(":"^PAROUV($I)",1:"^PARFER($I)"),TOP("%5CP")=1 D P1
  G P2
 P1 F TOP("%5Z")=1:1 S TOP("%5POS")=$F(EXP,TOP("%5PAR"),TOP("%5POS")) Q:TOP("%5POS")=0  S @TOP("%5TB")=TOP("%5CP"),TOP("%5CP")=TOP("%5CP")+1,@TOP("%5TB")@(TOP("%5POS")-1)=1

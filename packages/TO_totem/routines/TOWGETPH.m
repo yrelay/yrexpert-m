@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -81,7 +81,7 @@ TRAIT S CCS=CC G:CC=" " FIN S:(PASS=0)&(CC'="*") PASS=1 G:CC=OPH FIN
  S VU=1 G FIN
 L6 D:OPH'="" CONCLU S DEBL=$S($E(C,UU-1)="*":POS+1E-1,1:POS),OOPH=OPH,OPH=$S($E(C,UU)="*":$S((CCS=" ")!(CCS=""):OPH,1:CCS),1:CC),PASS=$S(OPH=OOPH:PASS,1:0),MAC=$S(CCS="-":"L7",1:"L6"),LAFNOP=$$^%QZCHW("LAMINAGE.FROID/")_NUOP,NOPLAF=LAFNOP D GET S NUOP=NUOP+100 G FIN
 GET S ^[QUI]PHAS(NUFA,0,NUOP)=NOPLAF,^[QUI]RAISON(NUFA,0,NUOP)="PHASEMODIFICATION",^[QUI]SECT(NUFA,0,NOPLAF)=MAC G FIN
-CONCLU S $ZT="FIN",CONS=$$^%QZCHW("De ")_DEBL_$$^%QZCHW(" a ")_$S($E(C,UU-1)="*":POS+1E-1,1:POS),^[QUI]DIM(NUFA,0,LAFNOP,1)=CONS G FIN
+CONCLU S $ZT="G FIN",CONS=$$^%QZCHW("De ")_DEBL_$$^%QZCHW(" a ")_$S($E(C,UU-1)="*":POS+1E-1,1:POS),^[QUI]DIM(NUFA,0,LAFNOP,1)=CONS G FIN
 OPER S XEC=79-(POS*10),YEC=-1 I (PASS'=0)!(OPH'="") S ORD=$P($P($T(ORD),";;",2),";",PASS),PARA=$$^%QZCHW("EPAISSEUR.")_ORD_$$^%QZCHW(".PASSE.")_$S(OPH="-":"L7",1:"L6"),VPA=POS D PARA
  F WW=0:0 S YEC=$N(^GRPH($I,XEC,YEC)) Q:YEC=-1  S SYMB=^GRPH($I,XEC,YEC) D TRSYM S NUOP=NUOP+100
  

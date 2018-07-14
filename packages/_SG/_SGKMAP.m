@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 26/08/12 ! ZN n'existe par pour GTM                       !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -67,8 +67,8 @@
  S Y1="DGIV"
  D CLEPAG^%VVIDEO
  D LIRE2^%VREAD("quelle est la partition ""noyau"" ? ",Y1,2,75,8,9,"","",.CTR,.KERN)
- %HL002 S $ZT="NEXIS^%SGKMAP" ZN KERN
- S $ZT="NEXIS^%SGKMAP" S ZN=$$ZGBLDIR^%GTM(KERN)
+ %HL002 S $ZT="G NEXIS^%SGKMAP" ZN KERN
+ S $ZT="G NEXIS^%SGKMAP" S ZN=$$ZGBLDIR^%GTM(KERN)
  S $ZT=""
  S PART=$$PCONF^%INCASTS("PROG")
  %HL002 ZN PART

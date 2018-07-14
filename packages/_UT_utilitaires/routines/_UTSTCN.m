@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 26/08/12 ! ZN n'existe par pour GTM                       !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -110,7 +110,7 @@ ERREUR1
  S @PARASITE@(@PARASITE,"REF")=ref
  S @PARASITE@(@PARASITE,"VAL")="<inaccessible>"
  S OKACC=0
- S $ZT="ERRGETV^%UTSTCN"
+ S $ZT="G ERRGETV^%UTSTCN"
  S @PARASITE@(@PARASITE,"VAL")=@ref,OKACC=1
 ERRGETV S $ZT=""
  S @PARASITE@(@PARASITE,"NET")=0 D:NETTOIE NETTOIE
@@ -124,7 +124,7 @@ NETTOIE
  N nval,nref
  S nval=$S(OKACC:$$NET^%QZCHNET(@ref),1:"")
  S nref=$$NET^%QZCHNET(ref)
- S $ZT="PBMENET^%UTSTCN"
+ S $ZT="G PBMENET^%UTSTCN"
  S @(nref_"=nval")
  S $ZT=""
  S @PARASITE@(@PARASITE,"NET")=1

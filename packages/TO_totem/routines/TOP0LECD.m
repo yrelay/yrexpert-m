@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -62,7 +62,7 @@
 ;TOP0LECD^INT^1^59547,74874^0
 TOP0LECB ;
  
- S LG=0,NUCLI=0,FIN=0,DX=0,DY=6,$ZT="ERREUR" D CLEBAS^%VVIDEO,ZD^%QMDATE4,^%QMDAK0 S DX=19,DY=3 X XY D BLK^%VVIDEO W "Recuperation" D NORM^%VVIDEO S DATE=$P(%DAT,"/",3)_$P(%DAT,"/",2)_$P(%DAT,"/",1),HOUR=$P(HEURE,"H",1)_"."_$P(HEURE,"H",2)
+ S LG=0,NUCLI=0,FIN=0,DX=0,DY=6,$ZT="G ERREUR" D CLEBAS^%VVIDEO,ZD^%QMDATE4,^%QMDAK0 S DX=19,DY=3 X XY D BLK^%VVIDEO W "Recuperation" D NORM^%VVIDEO S DATE=$P(%DAT,"/",3)_$P(%DAT,"/",2)_$P(%DAT,"/",1),HOUR=$P(HEURE,"H",1)_"."_$P(HEURE,"H",2)
  S DX=3,DY=6 X XY
 TR D LOOP
 FIN I FIN=1 D ^%VSQUEAK W !,"IL Y A UN PROBLEME AVEC LE LECTEUR DE BANDE [RETURN]" R *RET G QUIT

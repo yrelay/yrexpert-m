@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -90,7 +90,7 @@ NOINT I VSOURCE=VCOMP G ACCEPT
  S %ACCEPAR=0 D DESAC G END
 ACCEPT S %ACCEPAR=1 G END
 SUIT S NUCOND=-1,%ACCEPAR=0
-SU0 S $ZT="ERR",NUCOND=$N(@CTAB@(NUCOND)) G:NUCOND=-1 SU1 S ATEST="^[QUI]CCOMPARA("_REFCOM_","_NUCOND_")",@("%ACCEPAR="_@ATEST) G:%ACCEPAR=1 FIN G SU0
+SU0 S $ZT="G ERR",NUCOND=$N(@CTAB@(NUCOND)) G:NUCOND=-1 SU1 S ATEST="^[QUI]CCOMPARA("_REFCOM_","_NUCOND_")",@("%ACCEPAR="_@ATEST) G:%ACCEPAR=1 FIN G SU0
 SU1 D DESAC
 FIN S $ZT="" Q
 ERR G SU0

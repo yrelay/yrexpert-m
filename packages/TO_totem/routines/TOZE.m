@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -101,7 +101,7 @@ TABT S LI1=$P(LI,"#",1),DEF=$P(LI,"#",2),MNE=$P(LI,"/",1),PR=$P(LI,"/",2),COM=$P
  F IT="MNE","PR","DEF","COM","TBT" S ^TBTOZE($J,MNE,IT)=@IT
  S LI2=$P(LI1,"/",4,999),NIT=$L(LI2,"/") F IT=1:1:NIT S ^TBTOZE($J,MNE,"VAL",IT)=$P(LI2,"/",IT)
  Q
-ON S ^TOZE($I,"A")="AFF^TOERRIMP",^TOZE($I,"C")="COND^TOERRIMP",^TOZE($I,"B")="^TOERRABA" G FIN
+ON S ^TOZE($I,"A")="G AFF^TOERRIMP",^TOZE($I,"C")="G COND^TOERRIMP",^TOZE($I,"B")="G ^TOERRABA" G FIN
 OFF S ^TOZE($I,"A")="",^TOZE($I,"C")="",^TOZE($I,"B")="" G FIN
 ANION S ^TOZE($I,"ANIMATION")=1 G FIN
 ANIOFF S ^TOZE($I,"ANIMATION")=0 G FIN

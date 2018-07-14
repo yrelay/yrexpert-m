@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -82,7 +82,7 @@ INITFIFO() N G,V
  S (@G@(V,"DEB"),@G@(V,"FIN"))=1
  Q V
 PULLFIFO(IFIFO) N G,ADR,RES
- S $ZT="PULLERR"
+ S $ZT="G PULLERR"
  S G="^TEMPORAI("_$J_","""_$P($ZPOS,"^",2)_""",""F"")"
  S ADR=@G@(IFIFO,"ADR")
  S RES=@ADR@(@G@(IFIFO,"DEB")),@G@(IFIFO,"DEB")=@G@(IFIFO,"DEB")+1
@@ -90,7 +90,7 @@ PULLFIFO(IFIFO) N G,ADR,RES
 PULLERR S $ZT="" Q ""
  
 PUSHFIFO(IFIFO,VAL) N G,ADR
- S $ZT="PUSHERR"
+ S $ZT="G PUSHERR"
  S G="^TEMPORAI("_$J_","""_$P($ZPOS,"^",2)_""",""F"")"
  S ADR=@G@(IFIFO,"ADR")
  S @ADR@(@G@(IFIFO,"FIN"))=VAL,@G@(IFIFO,"FIN")=@G@(IFIFO,"FIN")+1
@@ -98,7 +98,7 @@ PUSHFIFO(IFIFO,VAL) N G,ADR
 PUSHERR S $ZT="" Q
  
 KILLFIFO(IFIFO) N G,ADR
- S $ZT="KILLERR"
+ S $ZT="G KILLERR"
  S G="^TEMPORAI("_$J_","""_$P($ZPOS,"^",2)_""",""F"")"
  S ADR=@G@(IFIFO,"ADR")
  K @(ADR),@G@(IFIFO)
@@ -113,14 +113,14 @@ INITLIFO() N G,V
  S @G@(V,"FIN")=0
  Q V
 PULLLIFO(ILIFO) N G,ADR,RES
- S $ZT="PULLERR"
+ S $ZT="G PULLERR"
  S G="^TEMPORAI("_$J_","""_$P($ZPOS,"^",2)_""",""L"")"
  S ADR=@G@(ILIFO,"ADR")
  S RES=@ADR@(@G@(ILIFO,"FIN")),@G@(ILIFO,"FIN")=@G@(ILIFO,"FIN")-1
  S $ZT="" Q RES
  
 PUSHLIFO(ILIFO,VAL) N G,ADR
- S $ZT="PUSHERR"
+ S $ZT="G PUSHERR"
  S G="^TEMPORAI("_$J_","""_$P($ZPOS,"^",2)_""",""L"")"
  S ADR=@G@(ILIFO,"ADR")
  S @G@(ILIFO,"FIN")=@G@(ILIFO,"FIN")+1,@ADR@(@G@(ILIFO,"FIN"))=VAL
@@ -143,14 +143,14 @@ PMRKLIFO(ILIFO)
  Q %M
  
 TOPLIFO(ILIFO) N G,ADR
- S $ZT="PULLERR"
+ S $ZT="G PULLERR"
  S G="^TEMPORAI("_$J_","""_$P($ZPOS,"^",2)_""",""L"")"
  S ADR=@G@(ILIFO,"ADR")
  S RES=@ADR@(@G@(ILIFO,"FIN"))
  S $ZT="" Q RES
  
 KILLLIFO(ILIFO) N G,ADR
- S $ZT="KILLERR"
+ S $ZT="G KILLERR"
  S G="^TEMPORAI("_$J_","""_$P($ZPOS,"^",2)_""",""L"")"
  S ADR=@G@(ILIFO,"ADR")
  K @(ADR),@G@(ILIFO)

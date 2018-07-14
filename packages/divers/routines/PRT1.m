@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -70,7 +70,7 @@ METTLER(NUMPT,ORDRE,GLORES)
  N TIMOUT,VX,NOK
  
  S TIMOUT=1
- S $ZT="ERRMET^PRT1"
+ S $ZT="G ERRMET^PRT1"
  O NUMPT::TIMOUT E  G ERRMETT
  S $ZT=""
  

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 29/10/17 ! La partition principale est YXP ou %DIR        !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -75,7 +75,7 @@
  K ^TEST
  S LPBME="^TEST(1)",@LPBME=0
  
- S $ZT="ERREUR^%UTSTCDI"
+ S $ZT="G ERREUR^%UTSTCDI"
  
  S ESCHEM=$$TEMP^%SGUTIL,ELOAD=$$TEMP^%SGUTIL
  S FILE2=PATH_"sdd.arc"
@@ -255,7 +255,7 @@ CR
  Q
  
 EXIFILE(FILE) 
- S $ZT="NEXIFI"
+ S $ZT="G NEXIFI"
  O 12:("R":FILE):0 E  G NEXIFI
  S $ZT="" C 12 Q 1
 NEXIFI S $ZT="",@LPBME=@LPBME+1,@LPBME@(@LPBME)="<WARNING> pas de fichier "_FILE

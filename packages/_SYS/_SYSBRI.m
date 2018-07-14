@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -66,7 +66,7 @@
  S V="ZR  F Z=0:0 X V2 ZS @ROU S:'$D(^ZRI(DAT,HEURE,ROU)) ^ZRI(DAT,HEURE,ROU)="""" Q:L="""""
  S V2="F J=1:1:40 R L S L=$P(L,$C(13),1) Q:L=""""  S:L[$C(9) L=$P(L,$C(9),1)_"" ""_$P(L,$C(9),2,99) ZI L"
  
- S %JO=$J#256,%R=0 K ^UTILITY(%JO) S $ZT="ERR"
+ S %JO=$J#256,%R=0 K ^UTILITY(%JO) S $ZT="G ERR"
  I (IOT="MT")!(IOT="BT") D READYMT I POP G OPTQ
  U IO R HEAD,DAT U 0 W !,!,"Bande ecrite par ",DAT
  W " avec la description:",!,HEAD
@@ -109,7 +109,7 @@ ENDFIL S R=0 S:$D(^UTILITY("ROU",0)) R=+(^(0)) S $P(^(0),"^",1)=%R+R
  U 0 W !,!,%R," routines recuperees." D SKIP
  I IOT="MT" U IO W *-2 I IOPAR["L" W *-2,*-2,*-2,*-2
  G OPTQ
-LOADERR S $ZT="ERR" U 0 W !,!,"[Probleme de recuperation sur routine ",ROU,".]" U IO D ERR,SKIP Q
+LOADERR S $ZT="G ERR" U 0 W !,!,"[Probleme de recuperation sur routine ",ROU,".]" U IO D ERR,SKIP Q
 ERR S A=$ZA,^ZRI(DAT,HEURE,ROU)="PB" U 0 W !,!,$ZE,!,"$ZA = ",A Q
 OPTQ K ^UTILITY(%JO) U 0 C:$I'=IO IO K %JO,%R,A,ANS,GREF,HEAD,I
  K IO,IOBS,IOF,IOM,IOPAR,IOSL,IOST,IOT,NS,OK,OVLAY,POP,R,ROU,S,SEL,TEXT
@@ -127,7 +127,7 @@ OK2SAV I '(OVLAY),$D(^UTILITY("ROU",ROU))
  S OK='($T) Q
 RDIR I OK S ^UTILITY("ROU",ROU)="",^UTILITY(%JO,ROU)="",%R=%R+1
  Q
-SAVE I OK U IO S $ZT="LOADERR" X V Q
+SAVE I OK U IO S $ZT="G LOADERR" X V Q
 SKIP U IO F I=0:0 R X S X=$P(X,$C(13),1) Q:X=""
  K I,X Q
 OVLQ W !,!,"S' il existe deja des routines ayant le meme nom,"

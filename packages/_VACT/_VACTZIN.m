@@ -54,15 +54,17 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 14/07/18 ! Erreur %GTM-E-INVCMD                           !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
+ R "Yael=",*HL
 ;%VACTZIN^INT^1^59547,74033^0
 %VACTZIN ;
  S ^TOZE("LIM")=300
- S $ZT="FIN",INT=WHOIS D STAND^%VTOZE S:^TABIDENT(WHOIS,"IMPRCOUR")<30 ^TABIDENT(WHOIS,"IMPRCOUR")=60
+ ;HL001 S $ZT="FIN",INT=WHOIS D STAND^%VTOZE S:^TABIDENT(WHOIS,"IMPRCOUR")<30 ^TABIDENT(WHOIS,"IMPRCOUR")=60
+ S $ZT="G FIN",INT=WHOIS D STAND^%VTOZE S:^TABIDENT(WHOIS,"IMPRCOUR")<30 ^TABIDENT(WHOIS,"IMPRCOUR")=60
  D IMPR^%QAX
 LP G:$T(@INT)="" STAG1 S LI=$P($T(@INT),";;",2) G:LI="" FIN I LI["IDEM" S INT=$P(LI,":",2) G LP
  F %U=0:1 S LI=$P($T(@INT+%U),";;",2) Q:LI=""  Q:LI="*"  S TB=$P(LI,"/",1),LI=$P(LI,"/",2) F %V=1:1 S %M=$P(LI,";",%V) Q:%M=""  S %M1=$P(%M,":",1),%M2=$P(%M,":",2),@TB@(%M1)=%M2

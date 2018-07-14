@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -74,7 +74,7 @@ LEC W !,!,!,!,!,"Desirez-vous avoir acces a la (M)ise a jour ou a l'(E)dition (C
 DIR W !,"Directory (C directory courant) : " R DIR Q:$A(DIR)<32  G:DIR["?" LDIR I DIR="C" D INT+1^%DIR K %ST S DIR=%DIR W " => ",%DIR
  I '($D(@SYS@(DIR))) W " ???" G DIR
 GLO W !,!,?10,"? Liste",!,?10,"1 Ajout",!,?10,"2 Suppression",!,!,"Option : " R OPT G:$A(OPT)<32 DIR G:(OPT'="1")&((OPT'="2")&(OPT'="?")) GLO G:OPT["?" LGLO
-GLO1 W !,"Global ",$S(OPT=1:"(TOUS)",1:""),": " R GLO G:$A(GLO)<32 GLO S $ZT="ERR"
+GLO1 W !,"Global ",$S(OPT=1:"(TOUS)",1:""),": " R GLO G:$A(GLO)<32 GLO S $ZT="G ERR"
 NET I $E(GLO,1)="^" W *
  S @GLO=1 G @OPT
 1 I $D(^%SAVE(DIR,GLO)) W " deja existant dans la liste " G GLO1

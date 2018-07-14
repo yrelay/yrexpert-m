@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -108,10 +108,10 @@ SIFON S SIF=0
  S AFFECT="%RESUL",%RESUL="%RESULTAT"
  K CONTAF,EXPFONC,ROUTI
  Q
-ORDEVA S $ZT="FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^^"_VPA
+ORDEVA S $ZT="G FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^^"_VPA
 FINO Q
-INCR S $ZT="FINO",@^CPTPAR(1)=@^CPTPAR(1)+1 G LOPAR
-TRI S $ZT="FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^"_NTRI_"^"_VPA G FINO
+INCR S $ZT="G FINO",@^CPTPAR(1)=@^CPTPAR(1)+1 G LOPAR
+TRI S $ZT="G FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^"_NTRI_"^"_VPA G FINO
 END S $ZT=TOZEA
  K TOZEA,TOZEC,UNDEFCI,NTRI,PARA,CONDIT,HEURE,PRX,SOURCE,PARAP,ATEST,CATEST,AFFECT,VPA,%MODA,CONTAF,%RESUL,%RESULTAT,%POR,EXPFONC,ROUTI Q
 BLIMP S %ABEND=2,ET=^PILETUD($I,0),^PILETUD($I,ET)=NUFA_"^"_TWREF_"^1^IMPL^"_NTRI_"^"_QUI_"^^"_^[QUI]TVPAR(NUFA,TWREF,$$^%QZCHW("QUANTITE"))_"^"_YA_"^"_YB_"^0^0" G END

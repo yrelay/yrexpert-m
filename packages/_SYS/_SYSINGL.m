@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -75,7 +75,7 @@ DEB
  S DX=5,DY=6 X XY D REV^%VVIDEO W "Vous etes sur la partition :" S DX=$X+1 X XY D NORM^%VVIDEO,BLD^%VVIDEO,BLK^%VVIDEO W RETOUR D NORM^%VVIDEO
  S DX=5,DY=10 X XY D BLD^%VVIDEO W "Donnez le nom de la partition a initialiser : " D NORM^%VVIDEO R DIR
  I DIR="" G END
- S $ZT="ERR"
+ S $ZT="G ERR"
  D ^%VZEATT,ADR^%QCSCDIR("PDP",DIR)
 RESTOR 
  S $ZT="",X0="ZL @(""%SYSING1"") F J=3:1 S LI=$T(+J) Q:LI=""""  S LI=$P(LI,"";;"",2,500),RF=$P(LI,""="",1),VL=$P(LI,""="",2,500),@RF=VL" X X0

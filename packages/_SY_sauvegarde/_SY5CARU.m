@@ -54,7 +54,6 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -106,7 +105,7 @@ FORK(ROUT,SYMB,IDEV,ODEV,TIMOUT)
  S NOFORK=0
  S DEVI=$$GETDEV Q:DEVI=-1 0
  S X=" J "_ROUT_":(PDEV="_DEVI_")"
- S $ZT="ERFORK^%SYSCARU"
+ S $ZT="G ERFORK^%SYSCARU"
  X X
  S $ZT=""
  Q 1-NOFORK

@@ -54,14 +54,14 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
 ;TOYARTI2^INT^1^59547,74877^0
 TOYARTI2(A) 
- N CH,HE,N,%N,NBL,NP,P,%P,%PORT,PR,Q,%Q,R,%R,UN S $ZT="CTRLC"
+ N CH,HE,N,%N,NBL,NP,P,%P,%PORT,PR,Q,%Q,R,%R,UN S $ZT="G CTRLC"
  D POCLEPA^%VVIDEO W $$^%QZCHW("Edition en cours ...")
  S %PORT=^TABIDENT(WHOIS,"PRINTER")
  I %PORT'=0 C %PORT O %PORT

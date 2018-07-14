@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -89,7 +89,7 @@ T01 S NOMTREE="^[QUI]"_$E(TB,1,8)_"("""_ART_"""",%TAD="COPY^TOTRANSF"
  K @("^[TO]"_TB_"(ART)")
  D ^%QCAGTW
  G LART
-COPY S $ZT="ERR" W "." S %RS=@%T,T="^[TO]"_$P(%T,"]",2,999),@T=%RS Q
+COPY S $ZT="G ERR" W "." S %RS=@%T,T="^[TO]"_$P(%T,"]",2,999),@T=%RS Q
 3 
  S TAB=$P($T(ABAC),";;",2)
 21 K ^GLO($J) F %U=1:1 S TB=$P(TAB,",",%U) Q:TB=""  S ^GLO($J,$E(TB,1,8))=1
@@ -102,7 +102,7 @@ LG S GLO=$N(^GLO($J,GLO))
 4 
  S TAB=$P($T(TAB),";;",2) G 21
  
-COPYT W "." S $ZT="ERR",%RS=@%T,T="^[TO]"_$P(%T,"]",2,999),@T=%RS Q
+COPYT W "." S $ZT="G ERR",%RS=@%T,T="^[TO]"_$P(%T,"]",2,999),@T=%RS Q
 KILL S %U1=-1 F %U2=1:1 S %U1=$N(@NOMTREE@(%U1)) Q:%U1=-1  I %U1'="z" K @("^[TO]"_GLO_"(%U1)")
  Q
 TABLETOT ;; TABLES TOTEM

@@ -54,7 +54,6 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -104,7 +103,7 @@ OPEN(APP,NODE,DATE,UNIT,PROT,VECT,EXTERNE)
  S ER=$$O
  Q $$^LKPHYERR(ZA)+ER
  
-O() S $ZT="ERREUR^LKPHYERR"
+O() S $ZT="G ERREUR^LKPHYERR"
  O:TIMEOUT UNIT:(MODE:@PVECT@("SIZ"):@PVECT@("BLK")) S ZA=$ZA S:0 @TEMP@("ERR","TIMEOUT")=" Time out",T=1
  S $ZT=""
  Q 0
@@ -120,7 +119,7 @@ CLOSE()
  K @(TEMP)
  Q ER
  
-C() S $ZT="ERREUR^LKPHYERR"
+C() S $ZT="G ERREUR^LKPHYERR"
  C UNIT S ZA=$ZA
  S $ZT="" Q 0
  
@@ -147,7 +146,7 @@ REWIND() N APP,NODE,DATE,UNIT,PROT,VECT,ROOT,ERRA,TEMP,DATA,PAR,PPRO,ZA,ER
  S ER=$$R
  Q ER+$$^LKPHYERR(ZA)
  
-R() S $ZT="ERREUR^LKPHYERR"
+R() S $ZT="G ERREUR^LKPHYERR"
  U UNIT W *-5 S ZA=$ZA U 0
  S $ZT="" Q 0
  
@@ -160,7 +159,7 @@ TM() N APP,NODE,DATE,UNIT,PROT,VECT,ROOT,ERRA,TEMP,DATA,PAR,PPRO,ZA,ERR
  S ERR=$$T
  Q ERR+$$^LKPHYERR(ZA)
  
-T() S $ZT="ERREUR^LKPHYERR"
+T() S $ZT="G ERREUR^LKPHYERR"
  U UNIT W *-3 S ZA=$ZA U 0
  S $ZT="" Q 0
  
@@ -173,7 +172,7 @@ EOF() N APP,NODE,DATE,UNIT,PROT,VECT,ROOT,ERRA,TEMP,DATA,PAR,PPRO,ZA,ERR
  S ERR=$$E
  Q ERR+$$^LKPHYERR(ZA)
  
-E() S $ZT="ERREUR^LKPHYERR"
+E() S $ZT="G ERREUR^LKPHYERR"
  U UNIT W *-9 S ZA=$ZA U 0
  S $ZT="" Q 0
  

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -87,7 +87,7 @@ EVAL(REP,IND,DOM)
 F10 S NUMCD=$O(@GCOMP@(NUMCD))
  Q:NUMCD="" ALLEV-1
  I $D(@GCOMP@("P",NUMCD,"LIE")) G F10
-F12 S $ZT="F25^%QWDMAC",ERR="",$ZE=""
+F12 S $ZT="G F25^%QWDMAC",ERR="",$ZE=""
 F20 I @(@GCOMP@(NUMCD,"E"))  S $ZT="" G F30
  S $ZT="" G F10
 F25 S ERR=$ZE,$ZT=""

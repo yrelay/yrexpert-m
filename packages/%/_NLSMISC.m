@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -63,7 +63,7 @@
 %NLSMISC ; NLS miscellaneous ; JLC062 11/23/98  ; Compiled March 6, 2000 19:35:34
  ;%ShmObj.INC ; CFL204 12/11/98 
  Quit
-LoadISO(name,file) New (name,file,desc) Set $ZT="%LoadISOERROR"
+LoadISO(name,file) New (name,file,desc) Set $ZT="G %LoadISOERROR"
  Set ref=$name(^%nls("Src","XLT",name,"Unicode")) Kill @ref
  Set @ref="Loaded "_name_" to Unicode Translation"
  Set @ref@(0)=0
@@ -79,9 +79,9 @@ LoadISO(name,file) New (name,file,desc) Set $ZT="%LoadISOERROR"
  Set src=$name(^%nls("Src","SUB",name_"-Unicode")) Kill @src
  Set @src="Loaded "_name_" to Unicode Table"
  Set @src@(0)=0,src=$name(@src@(1))
- o file:"R" Set $ZT="%LoadISOEOF"
+ o file:"R" Set $ZT="G %LoadISOEOF"
  For  u file r x Set x=$p(x,"#") Set:x'="" @src@($zh($p($p(x,$c(9),1),"0x",2)))=$zh($p($p(x,$c(9),2),"0x",2))
-%LoadISOEOF Set $ZT="%LoadISOERROR" c file u 0
+%LoadISOEOF Set $ZT="G %LoadISOERROR" c file u 0
  For from=0:1:159 Set:'$d(@src@(from)) @src@(from)=from
  Set dst=$name(^%nls("Src","SUB","Unicode-"_name)) Kill @dst
  Set @dst="Generated Unicode to "_name_" Table"

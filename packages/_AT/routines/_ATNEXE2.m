@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -86,7 +86,7 @@ BCLAC I %FIN=1 S %FIN=0 G FINAC
  I $E(%VNG(5),1,2)="C|" G APPATN
  
  I $E(%VNG(5),1,2)="X|" S %VNG(5)=$E(%VNG(5),3,$L(%VNG(5)))
- S $ZT="ERRAC^%ATNEXE2"
+ S $ZT="G ERRAC^%ATNEXE2"
  X %VNG(5)
  S $ZT=""
  G BCLAC

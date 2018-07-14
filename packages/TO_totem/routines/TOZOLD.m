@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -63,7 +63,7 @@
 TOZE ;
  
  G DEB
-ON S ^TOZE($I,"A")="AFF^TOERRIMP",^TOZE($I,"C")="COND^TOERRIMP",^TOZE($I,"B")="^TOERRABA" G FIN
+ON S ^TOZE($I,"A")="G AFF^TOERRIMP",^TOZE($I,"C")="G COND^TOERRIMP",^TOZE($I,"B")="G ^TOERRABA" G FIN
 OFF S ^TOZE($I,"A")="",^TOZE($I,"C")="",^TOZE($I,"B")="" G FIN
 LG W !,$$^%QZCHW("Langue ? ") R LG S ^TOZE("LG")=LG G TRAD
 LEXON S ^TOZE($I,"L")=1 G FIN
@@ -96,7 +96,7 @@ MACON S ^TOZE($I,"MACHINE")=1 G FIN
 MACOFF S ^TOZE($I,"MACHINE")=0 G FIN
 ANION S ^TOZE($I,"ANIMATION")=1 G FIN
 ANIOFF S ^TOZE($I,"ANIMATION")=0 G FIN
-MOZON S ^TOZE($I,"MOZEV")="COND^%MZERRGL" G FIN
+MOZON S ^TOZE($I,"MOZEV")="G COND^%MZERRGL" G FIN
 MOZOFF S ^TOZE($I,"MOZEV")="" G FIN
 BELLON S ^TOZE($I,"BELL")=1 G FIN
 BELLOF S ^TOZE($I,"BELL")=0 G FIN

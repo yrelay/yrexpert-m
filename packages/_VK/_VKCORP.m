@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -81,10 +81,10 @@ CHAN S:ROUTI'["C3" ROUTI="C3"_ROUTI
 D D ACCOR G:'(ACCOR) LOOP1 S OAJCMS=$S($D(%AJCMS):%AJCMS,1:""),%AJCMS="Duplication",ABENDSCR=0
  D POCLEPA^%VVIDEO,^%VSQUEAK W "N'oubliez pas de changer les champs cles" H 2 D CLEPAG^%VVIDEO,^%VAFIGRI,^%VAFISCR,^%VKMODIS S %AJCMS=OAJCMS G LOOP1:ABENDSCR=1 D ^%VKAUSTP S ^PRESCR($I,SCR,%NBPVU)=NOMTAB_"("_$P(NOM,"(",2,599),%PCOUR=%NBPVU,%NBPVU=%NBPVU+1 D NEWOLD G LOOP1
 M D ACCOR G:'(ACCOR) LOOP1 S ABENDSCR=0,%AJCMS="Modification" D ^%VATYPA,^%VKMODIS G LOOP1:ABENDSCR=1 K @(OLDNOM),@(OLDFULL)
- I $D(%MOINS) S $ZT="SS^%VKCORP" X "ZL "_$P(NOMAJ,"^",2)_" P "_$P(%MOINS,"^",1) D @%MOINS
+ I $D(%MOINS) S $ZT="G SS^%VKCORP" X "ZL "_$P(NOMAJ,"^",2)_" P "_$P(%MOINS,"^",1) D @%MOINS
 SS S $ZT="" D ^%VKAUSTP S ^PRESCR($I,SCR,%PCOUR)=NOMTAB_"("_$P(NOM,"(",2,599) D NEWOLD G LOOP1
 S D ACCOR G:'(ACCOR) LOOP1 D ^%VSQUEAK S PADMESSA="                          **** confirmer la suppression ****" D PAD^%VZEATT R *X1 G LOOP1:X1'=83 K @(OLDNOM),@(OLDFULL),^PRESCR($I,SCR,%PCOUR)
- I $D(%MOINS) S $ZT="SM^%VKCORP" X "ZL "_$P(NOMAJ,"^",2)_" P "_$P(%MOINS,"^",1) D @%MOINS
+ I $D(%MOINS) S $ZT="G SM^%VKCORP" X "ZL "_$P(NOMAJ,"^",2)_" P "_$P(%MOINS,"^",1) D @%MOINS
 SM S $ZT="" D CLEPAG^%VVIDEO G LOOP1
 C S %PCOUR=%NBPVU-1 D POCLEPA^%VVIDEO S PADMESSA="...RECHERCHE EN COURS..." X XY D PAD^%VZEATT G CHAN
 REFUS G:X1<27 REFUSE S YG=$C(X1),DX=$X X XY S PCX=$X-1,PCY=$Y D BEG^%VLEC I (CTRLA=1)!((CTRLF=1)!(Y1="")) G REFUSE

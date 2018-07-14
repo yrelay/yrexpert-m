@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -63,7 +63,7 @@
 
 STACK ;display the process stack
  N (%msub) D CURRENT^%IS S TRACE=$G(^trace($P($ZPOS,"^",2))),POP=0
- D OPEN^%FILTER(RM,SL) S $ZT="SCLOSE^"_$P($ZPOS,"^",2),$ZE=""
+ D OPEN^%FILTER(RM,SL) S $ZT="G SCLOSE^"_$P($ZPOS,"^",2),$ZE=""
  D PSTACK ;print the stack information
 SCLOSE S $ZT="" I $ZE]"" W !,"Error:"_$ZE S $ZE=""
  D CLOSE^%FILTER("") Q  ;close w/o fini
@@ -84,7 +84,7 @@ PRINT ;print all the variables for each stack level
  S TRACE=$G(^trace($P($ZPOS,"^",2))) W !!,"Display on" D OUT^%IS Q:POP
  S SELF=($I=IO),RM=IOM,SL=IOSL I 'SELF S SL=0
  ;
- U IO D OPEN^%FILTER(RM,SL) S $ZT="PCLOSE^"_$P($ZPOS,"^",2),$ZE=""
+ U IO D OPEN^%FILTER(RM,SL) S $ZT="G PCLOSE^"_$P($ZPOS,"^",2),$ZE=""
  ;
  I $G(ALL) DO  G PCLOSE:POP
  . D PSTATE^%STACKS ;print the process state information
@@ -165,7 +165,7 @@ VLIST(R) N L,F,V,S ;list out the variables or stack levels
 TEST K  N (E) S A=1 D TEST1 Q  ;level=2
 TEST1 N A S (B,A)=2 DO  ;level = 3
  . N A,B S (C,B,A)=3 DO  ;level = 4
- . . N A,B,C S $ZT="TESTQ" ;error trap set! (level 4.1?)
+ . . N A,B,C S $ZT="G TESTQ" ;error trap set! (level 4.1?)
  . . S (D,C,B,A)=4 DO  ;level = 5
  . . . N A,B,C,D S (E,D,C,B,A)=5 D TEST2 ;level 6
 TESTQ Q

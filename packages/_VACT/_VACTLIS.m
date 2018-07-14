@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 28/08/09 ! Invalid command keyword encountered            !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -84,7 +84,7 @@ PIL I %Q>0,%Q?.N,$D(^GLOMENU($I,%PROG,%Q)) S A=^GLOMENU($I,%PROG,%Q) I A'="" S %
 END Q
 LIG() N A
  ;HL002 S $ZT="ER^%VACTLIS"
- ;S $ZT="D ER^%VACTLIS"
+ S $ZT="G ER^%VACTLIS"
  S @("A="_LIG1)
  Q '(A)
 ER() Q 0

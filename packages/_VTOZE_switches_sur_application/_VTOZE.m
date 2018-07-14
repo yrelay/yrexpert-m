@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 09/07/18 ! Erreur %GTM-E-INVCMD                           !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -125,7 +125,8 @@ TABTSPE
  S MNE=$P(LI,"/",1),COM=$P(LI,"/",3)
  S TBT=$S(PR="":"^TOZE",1:"^TOZE("_PR_")")
  S COND="S OK="_$S(COND'="":COND,1:1)
- S $ZT="ERRCOND^%VTOZE"
+ ;HL001 S $ZT="ERRCOND^%VTOZE"
+ S $ZT="G ERRCOND^%VTOZE"
  X COND Q:'(OK)
  F IT="MNE","PR","DEF","COM","TBT" S ^TBTOZE($J,MNE,IT)=@IT
  S LI2=$P(LI1,"/",4,999),NIT=$L(LI2,"/") F IT=1:1:NIT S ^TBTOZE($J,MNE,"VAL",IT)=$P(LI2,"/",IT)
@@ -133,7 +134,7 @@ TABTSPE
 ERRCOND 
  S $ZT="" Q
  
-ON S ^TOZE($I,"A")="AFF^TOERRIMP",^TOZE($I,"C")="COND^TOERRIMP",^TOZE($I,"B")="^TOERRABA"
+ON S ^TOZE($I,"A")="G AFF^TOERRIMP",^TOZE($I,"C")="G COND^TOERRIMP",^TOZE($I,"B")="G ^TOERRABA"
  G FIN
 OFF S ^TOZE($I,"A")="",^TOZE($I,"C")="",^TOZE($I,"B")="" G FIN
 ANION S ^TOZE($I,"ANIMATION")=1 G FIN

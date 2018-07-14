@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -89,10 +89,10 @@ FIN K UNDEFCI Q
 AVERTI D POCLEPA^%VVIDEO,^%VSQUEAK W "* ",PARA," * non defini, nous aurons peut-etre des problemes" H 3 Q
 ABEND S %ABEND=1,DX=10,DY=9 X XY D BLD^%VVIDEO,BLK^%VVIDEO,REV^%VVIDEO,CAG^%VVIDEO W $$^%QZCHW("A R R E T") D NORM^%VVIDEO W !,!,?5 D BLD^%VVIDEO,BLK^%VVIDEO,REV^%VVIDEO W $$^%QZCHW("de l'etude "),NUFA,$$^%QZCHW(" sur "),YA D NORM^%VVIDEO H 5 S DE=7,FI=$Y D ^%ABNETTO Q
 SIFON S SIF=0 Q:@AFFECT'["$"  S CONTAF=@AFFECT G:CONTAF'["$$" FIN S SIF=1,ROUTI="^"_$P($P(CONTAF,"/",1),"$$",2),EXPFONC=$S($E(CONTAF,1)="(":$E(CONTAF,2,$L(CONTAF)-1),1:CONTAF) D @ROUTI S AFFECT="%RESUL",%RESUL="%RESULTAT" K CONTAF,EXPFONC,ROUTI Q
-ORDEVA S $ZT="FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^^"_VPA
+ORDEVA S $ZT="G FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^^"_VPA
 FINO Q
-INCR S $ZT="FINO",@^CPTPAR(1)=@^CPTPAR(1)+1 G LOPAR
-TRI S $ZT="FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^"_NTRI_"^"_VPA G FINO
+INCR S $ZT="G FINO",@^CPTPAR(1)=@^CPTPAR(1)+1 G LOPAR
+TRI S $ZT="G FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^"_NTRI_"^"_VPA G FINO
 END K TOZEA,TOZEC,UNDEFCI,NTRI,PARA,CONDIT,HEURE,PRX,SOURCE,PARAP,ATEST,CATEST,AFFECT,VPA,%MODA,CONTAF,%RESUL,%RESULTAT,%POR,EXPFONC,ROUTI Q
 BLIMP S %ABEND=2,ET=^PILETUD($I,0),^PILETUD($I,ET)=NUFA_"^"_TWREF_"^1^IMPL^"_NTRI_"^"_QUI_"^^"_^[QUI]TVPAR(NUFA,TWREF,$$^%QZCHW("QUANTITE"))_"^"_YA_"^"_YB_"^0^0" G END
 BR D AFF^%VTIME B

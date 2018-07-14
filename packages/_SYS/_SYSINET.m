@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -77,7 +77,7 @@ ARRET I '($D(^netrout)) W !,!,"Desole, rattrapage impossible..." Q
  S RDEB=$O(@%TB@(%ROUT)) I RDEB="" W !,!,"Il n'y a plus de routine a nettoyer",! Q
  W !,!,"Poursuite du nettoyage a partir de ",RDEB G TR
 TR D INIT X %NET(0) Q
-INIT S %NET(0)="F %WW=0:0 S %ROUT=$O(@%TB@(%ROUT)) Q:%ROUT=""""  W !,%ROUT S ^NOMROU=%ROUT,^netrout=%REP_%ROUT D ^%SYSINE1 X %NET(2) W "" Nettoyee "" S $ZT=""ERR1"" X X1 W "" Compilee. """
+INIT S %NET(0)="F %WW=0:0 S %ROUT=$O(@%TB@(%ROUT)) Q:%ROUT=""""  W !,%ROUT S ^NOMROU=%ROUT,^netrout=%REP_%ROUT D ^%SYSINE1 X %NET(2) W "" Nettoyee "" S $ZT=""G ERR1"" X X1 W "" Compilee. """
  S %NET(2)="ZR  S %NU=0 F %UU=0:0 S %NU=$N(^ROUTINE(%ROUT,0,%NU)) Q:%NU=-1  X %NET(3) S ^ROUTINE(%ROUT,0,%NU)=%EXP"
  S %NET(3)="S %EXP=^ROUTINE(%ROUT,0,%NU),%LEXP=$L(%EXP) S %DER=%LEXP F %VV=1:1:%LEXP S %DCAR=$E(%EXP,%DER),%AS=$A(%DCAR) Q:%AS>32  S %EXP=$E(%EXP,1,%DER-1),%DER=%DER-1"
  S X1="W ?$X+9\10*10,%ROUT W:$X>70 ! S NL=^ROUTINE(%ROUT,0,0) ZR  X Y1 ZS @%ROUT"
@@ -85,10 +85,10 @@ INIT S %NET(0)="F %WW=0:0 S %ROUT=$O(@%TB@(%ROUT)) Q:%ROUT=""""  W !,%ROUT S ^NO
 2 S Y2="ZR  S L=0 F Z=0:0 X Z2 ZS @%ROUT Q:L>NL"
  S Z2="F L=L+1:1:L+20 Q:L>NL  ZI ^UTILITY(%JO,%ROUT,L)"
 NEXT Q
-ERR1 S $ZT="ERR3" G:$ZE'?1"<STORE>".E ERR3
+ERR1 S $ZT="G ERR3" G:$ZE'?1"<STORE>".E ERR3
  W "!" F L=1:1:NL S ^UTILITY(%JO,%ROUT,L)=^ROUTINE(%ROUT,0,L)
  X Y2 G NEXT
-ERR3 S $ZT="^%ET" W !,$ZE," loading routine ",%ROUT,".",! Q:$ZE?1"<INT".E  G NEXT
+ERR3 S $ZT="G ^%ET" W !,$ZE," loading routine ",%ROUT,".",! Q:$ZE?1"<INT".E  G NEXT
 CHOI ;;1 Nettoyage de routines quelconques^1
  ;;2 Nettoyage de routines suite a une recuperation sur bande^2
  ;;3 Poursuite du dernier nettoyage interrompu par une erreur^3

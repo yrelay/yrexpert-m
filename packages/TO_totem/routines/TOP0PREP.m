@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -66,7 +66,7 @@ TOP0PREP ;
 LEC1 S DX=0,DY=6,DZA="",X="",RR=-1 D CLEBAS^%VVIDEO S DX=0,DY=12 X XY W "OK pour la recuperation des cliches de cette bande (O/N) ? " R *REP G:REP=78 FIN I REP'=79 D ^%VSQUEAK G LEC1
  U 47 S DZA=$ZA U 0 S DX=0,DY=6 D CLEBAS^%VVIDEO
  D ^TOP0ERR1 G FIN
-ERR S $ZT="ERROR" F RR=1:1:3 U 47 R X
+ERR S $ZT="G ERROR" F RR=1:1:3 U 47 R X
 FIN U 0 S $ZT="" K ERR,TM,RR,X Q
 ERROR I '(DTM),$ZE["TAP" W *-2 G FIN
  I DTM,$$^%SYSBUG($ZERR)["TAP" W *-2 G FIN

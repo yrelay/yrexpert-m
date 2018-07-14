@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 14/07/18 ! Erreur %GTM-E-INVCMD                           !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -70,7 +70,8 @@ QZCHMX(CH)
  
  
  
- S $ZT="ERR^%QZCHMX"
+ ;HL001 S $ZT="ERR^%QZCHMX"
+ S $ZT="G ERR^%QZCHMX"
  S CH=CH+0
  S $ZT="" Q 0
 ERR 
@@ -80,7 +81,8 @@ ERR
  
  
 DIR(CH) 
- S $ZT="ERRD^%QZCHMX"
+ ;HL001 S $ZT="ERRD^%QZCHMX"
+ S $ZT="G ERRD^%QZCHMX"
  S CH=CH+0
  S $ZT="" Q 0
 ERRD 

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -165,7 +165,7 @@ AD(MSG,T) G AD2^%QMCAREC
 CVN 
  N TAB S TAB=$$TEMP^%QZCHAD($P($ZPOS,"^",2),"TAB") K @(TAB)
 CV2 G:ARRET=1 FC
- S $ZT="CVA^%QMCARE2"
+ S $ZT="G CVA^%QMCARE2"
  S SAUV=$$NXTRV^%QSTRUC8(REP,SAUV) G:SAUV="" FC
  I '($$ADR^%QZNBN1(SAUV)) G CVA
  I $E(SAUV,1,LSV)'=VAL S SAUVN=SAUVN_"0",SAUV=SAUVN G CV2
@@ -183,7 +183,7 @@ CNO
  F %I=0:0 S IND=$$NXTRI^%QSTRUC8(REP,IND) Q:(IND="")!(ARRET=1)  S (SAUV,SAUVN)=VAL D CNO2
  G FC
 CNO2 Q:ARRET=1
- S $ZT="CVO^%QMCARE2"
+ S $ZT="G CVO^%QMCARE2"
  S SAUV=$$NXTRIO^%QSTRUC8(REP,IND,SAUV) Q:SAUV=""
  I '($$ADR^%QZNBN1(SAUV)) G CVO
  I $E(SAUV,1,LSV)'=VAL S SAUVN=SAUVN_"0",SAUV=SAUVN G CNO2
@@ -199,7 +199,7 @@ CVO2 Q:ARRET=1
 CIN 
  N TAB S TAB=$$TEMP^%QZCHAD($P($ZPOS,"^",2),"TAB") K @(TAB)
 CI2 G:ARRET=1 FC
- S $ZT="CIA^%QMCARE2"
+ S $ZT="G CIA^%QMCARE2"
  S SAUV=$$NXTRI^%QSTRUC8(REP,SAUV) G:SAUV="" FC
  I '($$ADR^%QZNBN1(SAUV)) G CIA
  I $E(SAUV,1,LSV)'=VAL S SAUVN=SAUVN_"0",SAUV=SAUVN G CI2
@@ -225,7 +225,7 @@ SYNI
  S COD="" F %I=0:0 S COD=$O(^[QUI]ZSYNINV(COD)) Q:(COD="")!(ARRET=1)  S (SAUVN,SAUV)=VAL D SY
  G FC
 SY Q:ARRET=1
- S $ZT="SY2^%QMCARE2"
+ S $ZT="G SY2^%QMCARE2"
  S SAUV=$O(^[QUI]ZSYNINV(COD,SAUV)) Q:SAUV=""
  I '($$ADR^%QZNBN1(SAUV)) G SY2
  I $E(SAUV,1,LSV)'=VAL S SAUVN=SAUVN_"0",SAUV=SAUVN G SY

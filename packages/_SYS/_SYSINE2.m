@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -65,7 +65,7 @@
  G ALL
 INIT K %NET,%R D ^%RSET Q:%R=0
 BEG W !,%R," routines a nettoyer " S %ROUT=0
- S %NET(0)="F %WW=0:0 S %ROUT=$O(^UTILITY(%JO,%ROUT)) Q:%ROUT=""""  W !,%ROUT S ^NOMROU=%ROUT D ^%SYSINE1 X %NET(2) W "" Nettoyee "" S $ZT=""ERR1"" X X1 W "" Compilee. """
+ S %NET(0)="F %WW=0:0 S %ROUT=$O(^UTILITY(%JO,%ROUT)) Q:%ROUT=""""  W !,%ROUT S ^NOMROU=%ROUT D ^%SYSINE1 X %NET(2) W "" Nettoyee "" S $ZT=""G ERR1"" X X1 W "" Compilee. """
  S %NET(1)="R !,""Quelle routine ? "",%ROUT Q:%ROUT=""""  X %NET(2)"
  S %NET(2)="ZR  S %NU=0 F %UU=0:0 S %NU=$N(^ROUTINE(%ROUT,0,%NU)) X:%NU=-1 %NET(5) Q:%NU=-1  X %NET(3) S ^ROUTINE(%ROUT,0,%NU)=%EXP"
  S %NET(3)="S %EXP=^ROUTINE(%ROUT,0,%NU),%LEXP=$L(%EXP) S %DER=%LEXP F %VV=1:1:%LEXP S %DCAR=$E(%EXP,%DER),%AS=$A(%DCAR) Q:%AS>32  S %EXP=$E(%EXP,1,%DER-1),%DER=%DER-1"
@@ -82,8 +82,8 @@ ZCMPL
  
 NEXT Q
  
-ERR1 S $ZT="ERR3" G:$ZE'?1"<STORE>".E ERR3
+ERR1 S $ZT="G ERR3" G:$ZE'?1"<STORE>".E ERR3
  W "!" F L=1:1:NL S ^UTILITY(%JO,%ROUT,L)=^ROUTINE(%ROUT,0,L)
  X Y2 G NEXT
-ERR3 S $ZT="^%ET" W !,$ZE," loading routine ",%ROUT,".",! Q:$ZE?1"<INT".E  G NEXT
+ERR3 S $ZT="G ^%ET" W !,$ZE," loading routine ",%ROUT,".",! Q:$ZE?1"<INT".E  G NEXT
 

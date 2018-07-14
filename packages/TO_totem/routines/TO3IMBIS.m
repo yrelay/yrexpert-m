@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -90,9 +90,9 @@ ABEND S DX=10,%ABEND=1,DY=9 X XY D BLD^%VVIDEO,BLK^%VVIDEO,REV^%VVIDEO,CAG^%VVID
 END K %PAAAF,BISI,TOZEA,TOZEC,PARAP,PARA,CONDIT,SOURCE,TSDEF,ATEST,CATEST,RBL,AFFECT,CAFFECT,%POR,DE,FI,CONTAF,ROUTI,EXPFONC,%RESUL,%RESULTAT,PND,RBIS,UU,PSEP,DE,FI,NTRI,OPARA,PBIS,VPA Q
 SIFON S SIF=0 Q:@AFFECT'["$"  S CONTAF=@AFFECT G:CONTAF'["$$" FINO S SIF=1,ROUTI="^"_$P($P(CONTAF,"/",1),"$$",2),EXPFONC=$S($E(CONTAF,1)="(":$E(CONTAF,2,$L(CONTAF)-1),1:CONTAF) D @ROUTI S AFFECT="%RESUL",%RESUL="%RESULTAT" K CONTAF,EXPFONC,ROUTI Q
 FINO Q
-ORD S $ZT="FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^^"_^V($I,YA,%POR) G FINO
-TRI S $ZT="FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^"_NTRI_"^"_VPA G FINO
-INCR S $ZT="FINO",@^CPTPAR(1)=@^CPTPAR(1)+1 G FINO
+ORD S $ZT="G FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^^"_^V($I,YA,%POR) G FINO
+TRI S $ZT="G FINO",^[QUI]ORDEVAL(NUFA,TWREF,$$^%QZCHW("ART"),@^CPTPAR(1))=%POR_"^"_NTRI_"^"_VPA G FINO
+INCR S $ZT="G FINO",@^CPTPAR(1)=@^CPTPAR(1)+1 G FINO
 TSDEF S TSDEF=1,TDEF="^INDEF($I,NUFA,TWREF,"_SOURCE_")",PND=-1
  F UU=0:0 S PND=$N(@TDEF@(PND)) G:PND=-1 BISI D TEST I TSDEF=0 G FINT
 BISI S RF=$P(SOURCE,",",2,999),FIC=^[QUI]REPFICH(YA,"IMPLICI",RF),TDEF="^[QUI]INDEFIND("""_YA_""","_FIC_")",%U=""

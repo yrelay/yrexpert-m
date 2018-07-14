@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -123,7 +123,7 @@ LIREFIC(GLO,FIRST,FIC)
  S B=0
  C FIC
  O FIC
- S $ZT="ERRFIC"
+ S $ZT="G ERRFIC"
  F I=FIRST:1 U FIC R A S @GLO@(I)=A
  S $ZT=""
  C FIC
@@ -133,7 +133,7 @@ LIREFIC(GLO,FIRST,FIC)
 ECRFIC(GLO,FIRST,FIC) 
  N I,A,J
  C FIC
- S $ZT="ERRFIC"
+ S $ZT="G ERRFIC"
  O FIC:("(WN)"):1
  S J=$S(($D(@GLO@(FIRST))#10)=1:FIRST,1:$O(@GLO@(FIRST)))
  F I=0:0 Q:J=""  U FIC W:($D(@GLO@(J))#10)=1 !,@GLO@(J) S J=$O(@GLO@(J))

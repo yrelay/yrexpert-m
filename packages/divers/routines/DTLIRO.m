@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -74,7 +74,7 @@ VERIF U IO:(0:"IS":$C(13)) S %LT=$L(%T),%LRS=$L(%RS) W %LT,$C(13),%LRS,$C(13)
  F I=1:1:5 U IO:(0:"IS":$C(13)) R REP:3 U 0 W !,"Pour 2eme accord : ",REP G OK:REP["OK !",NOK:REP["nok"
 NOK U IO W "BIS",$C(13) G SUIT
 OK W !,"Affecte : ",%T,"=",%RS S %RO=$P(%T,"""",2) W !,%RO I '($D(^UTILITY($J,%RO))) S ^UTILITY($J,%RO)=1 X "ZR  ZS @%RO"
- S $ZT="ERR",@%T=%RS U IO:(0:"IS":$C(13)) W "SUITE",$C(13) G SUITE
+ S $ZT="G ERR",@%T=%RS U IO:(0:"IS":$C(13)) W "SUITE",$C(13) G SUITE
 FIN C IO W !,"Fin reception" Q
 ERR U 0:("":"B") W *7,!,"*** ERREUR ***",! S %NBERR=%NBERR+1,^ERREUR($J,%NBERR)=$ZE_"|"_%T_"|"_%RS U IO:(0:"IS":$C(13)) W *-1,"BIS",$C(13) G:$ZE["INTERRU" FIN G SUITE
 

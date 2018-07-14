@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -69,7 +69,7 @@
  S GLOBAT="^CARGBA"
  S @GLOBAT@("JOBSCHED")=$J
  
- S $ZT="ERR^%CARBA"
+ S $ZT="G ERR^%CARBA"
  S GLOECH="^CARGECH",GLOETA="^CARGETA"
  S GLOPAR=$$CONCAS^%QZCHAD(GLOBAT,"PARAM")
  

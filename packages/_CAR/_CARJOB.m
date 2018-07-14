@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -81,7 +81,7 @@
  
  S @GLOECH@("ECH",NUMECH,"NUMJOB")=$J,@GLOECH@("ECH",NUMECH,"DATDEB")=DATE
  
- S $ZT="PB^%CARJOB"
+ S $ZT="G PB^%CARJOB"
  
  D NETJOB^%SGNETMZ($J)
  

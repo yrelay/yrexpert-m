@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -66,7 +66,7 @@
  N TWAIT,GLOBAT,CTR,ESSAI,GLOERR,CPUSCHED,JSCHED,OLDCPU,WAITSUP
  N GLOBAT,RESF
  
- S $ZT="ERR^%CARSUP"
+ S $ZT="G ERR^%CARSUP"
  S GLOBAT="^CARGBA"
  
  S @GLOBAT@("JOBSUPER")=$J

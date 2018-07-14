@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -62,6 +62,6 @@
 ;%MZRRE^INT^1^59547,73872^0
 MOZERR(DI) 
  
- D CURRENT^%IS,CLEPAG^%VVIDEO S $ZT="ERR",J="" F I=1:1 S J=$ZJOB(J) I J'="" W *
+ D CURRENT^%IS,CLEPAG^%VVIDEO S $ZT="G ERR",J="" F I=1:1 S J=$ZJOB(J) I J'="" W *
 ERR D CLEPAG^%VVIDEO Q
 

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -107,7 +107,7 @@ RESTOR
  S RETOUR=%DIR
  S HOST=$$TABID^%INCOIN("ORDINATEUR")
  I HOST="" D ^%VZEAVT($$^%QZCHW("Veuillez definir l'utilisateur")) Q
- S NB=0,$ZT="LOP"
+ S NB=0,$ZT="G LOP"
  S Y0="ZL tl1 S LIM=+$P($P($T(+1),"";;"",2),"";"",1),%N=+$P($P($T(+1),"";;"",2),"";"",2)"
  S X0="ZL @(""tl""_I) F J=2:1 S LI=$T(+J) Q:LI=""""  S LI=$P(LI,"";;"",2,500),RF=$P(LI,""="",1),VL=$P(LI,""="",2,500) D ADR^%QCSCDIR(HOST,QUI) S @RF=VL,NB=NB+1 D ADR^%QCSCDIR(HOST,RETOUR)"
  S I=0 X Y0

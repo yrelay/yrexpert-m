@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -62,7 +62,7 @@
 ;TONETUSE^INT^1^59547,74873^0
 TONETUSE ;
  
- S $ZT="ERR",%T=-1 F %U=1:1 S %T=$N(^TOLISGLO(%T)) Q:%T=-1  S %GLO=-1 F %UU=1:1 S %GLO=$N(^TOLISGLO(%T,%GLO)) Q:%GLO=-1  W !,%GLO,$$^%QZCHW(" detruit") S %GL="^[TO]"_%GLO,%K1=-1 F %VV=1:1 S %K1=$N(@%GL@(%K1)) Q:%K1=-1  I %K1'="z" K @%GL@(%K1)
+ S $ZT="G ERR",%T=-1 F %U=1:1 S %T=$N(^TOLISGLO(%T)) Q:%T=-1  S %GLO=-1 F %UU=1:1 S %GLO=$N(^TOLISGLO(%T,%GLO)) Q:%GLO=-1  W !,%GLO,$$^%QZCHW(" detruit") S %GL="^[TO]"_%GLO,%K1=-1 F %VV=1:1 S %K1=$N(@%GL@(%K1)) Q:%K1=-1  I %K1'="z" K @%GL@(%K1)
  S %GLO=-1 F %UU=1:1 S %GLO=$N(^NAMEFUL(%GLO)) Q:%GLO=-1  S %GL="^[TO]"_$P(^NAMEFUL(%GLO),"^",1),%K1=-1 W !,$P(^NAMEFUL(%GLO),"^",1),$$^%QZCHW(" detruit") F %VV=1:1 S %K1=$N(@%GL@(%K1)) Q:%K1=-1  I %K1'="z" K @%GL@(%K1)
 FIN K %GLO,%GL,%K1,%UU,%VV Q
 ERR S %ERR=1 I $ZE'["PROT" G END

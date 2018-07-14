@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -73,7 +73,7 @@
  I '($D(%ST("BUFFS"))) N %ST D ^%ST
  W !,"Read m-code of routines.",!
  
- D GETDEV S %R=0,IO=$I,$ZE="",$ZT="EXIT"
+ D GETDEV S %R=0,IO=$I,$ZE="",$ZT="G EXIT"
  D @(DEV_"OPEN") G:POP EXIT D @(DEV_"MOUNT") U 0
  I $P(COMMENT,"~",2)'="%MCODERO" W *7,!,"[Not an m-code ",MEDIUM,".]" G EXIT
  W !,"Volume ",VOL," ",MEDIUM," writen on ",DATETIME
@@ -169,10 +169,11 @@ SETXEC(TAG) F L=0:1 S X=$T(@TAG+L),Y=$P(X,";",3),Z=$P(X,";",4,99) Q:Y=""  S @Y=Z
 MOUNT W !,"Mount a ",MEDIUM,".  <RETURN> when ready => ",*-1 R X W ! Q
  
 RDHEADER 
- S $ZE="",$ZT="ERRHEAD",OK=1 U IO R COMMENT,DATETIME,VOL Q
+ S $ZE="",$ZT="G ERRHEAD",OK=1 U IO R COMMENT,DATETIME,VOL Q
  
  
-ERRHEAD S $ZT="" D @(DEV_"ERR") E  G @$ZT
+;HL001 ERRHEAD S $ZT="" D @(DEV_"ERR") E  G @$ZT
+ERRHEAD S $ZT="" D @(DEV_"ERR") E  @$ZT
  U 0 W !,"[",MEDIUM," not ready.]" S OK=0 Q
  
  

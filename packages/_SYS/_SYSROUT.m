@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 01/02/07 ! $ZRS                                           !
 ;! HL002 ! HL     ! 26/08/12 ! ZN n'existe par pour GTM                       !
 ;!-------!--------!----------!------------------------------------------------!
@@ -160,8 +160,8 @@ SELECT(QUR,PREF,GLO)
  N L,ROU,PCOUR
  ;HL003 S PCOUR=$P($ZPOS,"^",2)SPACE
  S PCOUR=$$DCOUR^%GTM()
- ;HL003 S $ZT="SELERR" ZN QUR
- S $ZT="SELERR" S ZN=$$ZGBLDIR^%GTM(QUR)
+ ;HL003 S $ZT="G SELERR" ZN QUR
+ S $ZT="G SELERR" S ZN=$$ZGBLDIR^%GTM(QUR)
  S $ZT=""
  S L=$L(PREF)
  I $$EXIROU(QUR,PREF) S @GLO@(PREF)=""
@@ -178,8 +178,8 @@ SELERR S $ZT="" Q
 EXIROU(QUR,ROUT) 
  N PCOUR,X1,X2
  Q:QUR="" 0 Q:ROUT="" 0
- ;HL003 S PCOUR=$P($ZPOS,"^",2)SPACE,$ZT="EXIERR",X1="ZL "_ROUT,X2="ZL "_$P($ZPOS,"^",2)
- S PCOUR=$P($ZPOS,"^",2)_SPACE,$ZT="EXIERR",X1="ZL "_ROUT,X2="ZL "_$P($ZPOS,"^",2)
+ ;HL003 S PCOUR=$P($ZPOS,"^",2)SPACE,$ZT="G EXIERR",X1="ZL "_ROUT,X2="ZL "_$P($ZPOS,"^",2)
+ S PCOUR=$P($ZPOS,"^",2)_SPACE,$ZT="G EXIERR",X1="ZL "_ROUT,X2="ZL "_$P($ZPOS,"^",2)
  ;HL003 ZN QUR X X1
  S ZN=$$ZGBLDIR^%GTM(QUR) X X1
  ;HL003 S $ZT="" ZN PCOUR X X2 Q 1
@@ -193,11 +193,11 @@ EXIERR S $ZT="" S ZN=$$ZGBLDIR^%GTM(PCOUR) X X2 Q 0
  
 SUPROU(QUR,GLO) 
  N PCOUR,X1,X2
- ;HL003 S PCOUR=$P($ZPOS,"^",2)SPACE,$ZT="SUPERR1" ZN QUR S $ZT=""
- S PCOUR=$$DCOUR^%GTM(),$ZT="SUPERR1" S ZN=$$ZGBLDIR^%GTM(QUR) S $ZT=""
+ ;HL003 S PCOUR=$P($ZPOS,"^",2)SPACE,$ZT="G SUPERR1" ZN QUR S $ZT=""
+ S PCOUR=$$DCOUR^%GTM(),$ZT="G SUPERR1" S ZN=$$ZGBLDIR^%GTM(QUR) S $ZT=""
  S ROUT="",X1="ZL @ROUT ZR  ZS @ROUT"
 SUPBCL S ROUT=$O(@GLO@(ROUT)) Q:ROUT=""
- S $ZT="SUPERR2" X X1 S $ZT="" G SUPBCL
+ S $ZT="G SUPERR2" X X1 S $ZT="" G SUPBCL
 SUPERR2 S $ZT="" G SUPBCL
 SUPERR1 S $ZT="" Q
 

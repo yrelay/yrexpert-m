@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -66,7 +66,7 @@
  S ET=$$BLD^%VVIDEO1_"*"_$$NORM^%VVIDEO1
  D ZD^%QMDATE4,EBCD S IO=47
  S %ERRVU=0,DAAT=$P(%DAT,"/",3)_$P(%DAT,"/",2)_$P(%DAT,"/",1),NL=0
- S $ZT="ERR"
+ S $ZT="G ERR"
  O 47:("EVL":0:16384)
  
  U 0 W !,"RWD" U 47 W *-5 U 0 W !,"FINI"
@@ -91,7 +91,7 @@ LOOP1 S Z2=Z2+1 U 47 W *-6 S ZB=$ZB,OFFSET=$S(ZB>256:ZB-((ZB\256)*256),1:0)
 ERR S ZA=$ZA,ZB=$ZB U 0 S DX=0,DY=23 W !,$ZE," $ZA = ",ZA," $ZB = ",$ZB H 1 S %ERRVU=%ERRVU+1 G:%ERRVU'>1 ERR2
 ERR1 S $ZT="" W !,$$L2^%QSLIB R *REP:0 D TOUCHE^%INCCLAV(REP,.REP) G:REP=1 FIN
  U 0
-ERR2 S $ZT="ERR" U 47 W *-2 G LOOP
+ERR2 S $ZT="G ERR" U 47 W *-2 G LOOP
  
 GET S %OCH="",CH="" F Z1=0:1:255 S AA=$V((256*Z)+Z1,0,1),%OCH=%OCH_EBCDIC(AA),CH=CH_$C(AA)
  S NL=NL+1,^XXX($J,1,NL)=%OCH,^XXX($J,2,NL)=CH

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -63,7 +63,7 @@
 %NLSCOMP   ; FULLNLS compiler ; JLC178 11/30/99  ; Compiled March 6, 2000 19:35:34
  ;%ShmObj.INC ; CFL204 12/11/98 
  Quit
-Table(ttyp,fromenc,name,sref) New oid,ref,t1 Set $zt="%CompERROR" Set t1=$zh
+Table(ttyp,fromenc,name,sref) New oid,ref,t1 Set $zt="G %CompERROR" Set t1=$zh
  Set:'$d(sref) sref="^%nls"
  Kill ^%utility($j) Set ref=$name(@sref@("Src",ttyp,fromenc,name))
  If $e($g(@ref),1,8)="Built-in" Write:$d(^%nlsmisc("DEBUG")) "Built-in   ",ref,! Quit -1
@@ -103,20 +103,20 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
 %Ident Set oid=$$%CompBITS($name(@ref@(0))) Quit
 %Pattern If '$d(@ref@(1)) Set oid=-2 Quit
   New from,rng,i,lo,patcode,pattbl,val
- Set from="",patcode="",pattbl=@ref@(0),$ZT="%XLTERROR"
+ Set from="",patcode="",pattbl=@ref@(0),$ZT="G %XLTERROR"
  If '$d(@sref@("Src","Patcode",pattbl,0)) Set oid=-2 Quit  ; JLC078
  For  Set patcode=$o(@ref@(1,patcode)) Quit:patcode=""  Do
  . Set val=@sref@("Src","Patcode",pattbl,0,patcode)
  . For  Set from=$o(@ref@(1,patcode,from)) Quit:from=""  Set rng=^(from)  Do
  . . For i=from:1:from+rng-1 Set lo=i#256 Set ^(lo)=$zboolean(+val,+$g(^%utility($j,i\256,lo)),7)
  Set oid=$$%CompVAL($name(^%utility($j)),1) Quit
-%XY New from,rng,i,dxy Set dxy="",from="",$ZT="%XLTERROR"
+%XY New from,rng,i,dxy Set dxy="",from="",$ZT="G %XLTERROR"
  For  Set dxy=$o(@ref@(0,dxy)) Quit:dxy=""  Do
  . For  Set from=$o(@ref@(0,dxy,from)) Quit:from=""  Set rng=^(from) Do
  . . For i=from:1:from+rng-1 Set ^%utility($j,i\256,i#256)=dxy
  Set oid=$$%CompVAL($name(^%utility($j)),1) Quit
 %XLT New obj,typ,act,com,val,err,tmp,byt,top,i,pag
- Set err=0,$ZT="%XLTERROR",typ=@ref@(0)
+ Set err=0,$ZT="G %XLTERROR",typ=@ref@(0)
  Goto %XLTNormal:typ=0,%XLTToModal:typ=1,%XLTFromModal:typ=2
 %XLTERROR Do ErrMsg^%NLSLOAD("Error while trying to create "_$s($g(ttyp)="XLT":"Translation",$g(ttyp)="XY":"$X/$Y Behaviour",$g(ttyp)="Ident":"Identifier",$g(ttyp)="Pattern":"Pattern Match",$g(ttyp)="UpperCase":"Upper case",$g(ttyp)="LowerCase":"Lower case",$g(ttyp)="TitleCase":"Title case",1:"Collation")_" table "_$g(fromenc)_" to "_$g(name)_".")
  Quit
@@ -189,7 +189,7 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
  Goto:$zboolean(+typ,+1,1) %SUBToMulti
  Write:$d(^%nlsmisc("DEBUG")) !,"Error - Table type: ",$P("Single,ToMulti,FromMulti,Multi",",",$zboolean(+typ,+3,1)+1)," not yet supported"
  Quit 0
-%SUBSingle Set src=$name(@sref@("Src","SUB",name,1)),$ZT="%CompERROR"
+%SUBSingle Set src=$name(@sref@("Src","SUB",name,1)),$ZT="G %CompERROR"
  If $o(@src@(""),-1)<256 Set pag=1 Quit $$%CompPAG(src)
  New obj,oid,i,dst Set i="",dst=$name(^%utility($j,"SUB")) Kill @dst
  For  Set i=$o(@src@(i)) Quit:i=""  Set @dst@(i\256,i#256)=@src@(i)
@@ -198,7 +198,7 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
  . Set obj(i+1)=oid,$e(obj(0),i+1)=$c(^%shm("Obj",oid))
  If $o(obj(1))="" Set pag=1 Quit +$g(obj(1))
  Quit $$Save^%ShmObj(.obj)
-%SUBToMulti Set src=$name(@sref@("Src","SUB",name,1)),$ZT="%CompERROR"
+%SUBToMulti Set src=$name(@sref@("Src","SUB",name,1)),$ZT="G %CompERROR"
  If $o(@src@(""),-1)<256 Set pag=1 Quit $$%CompPAGMulti(src,1)
  New obj,oid,i,dst Set i="",dst=$name(^%utility($j,"SUB")) Kill @dst
  For  Set i=$o(@src@(i)) Quit:i=""  Set @dst@(i\256,i#256)=@src@(i)
@@ -207,7 +207,7 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
  . Set obj(i+1)=oid,$e(obj(0),i+1)=$c(^%shm("Obj",oid))
  If $o(obj(1))="" Set pag=1 Quit +$g(obj(1))
  Quit $$Save^%ShmObj(.obj)
-%SUBFromMulti Set $ZT="%CompERROR"
+%SUBFromMulti Set $ZT="G %CompERROR"
  Set src=$name(@sref@("Src","SUB",name,1)),lst=$o(@src@(""),-1) zt:lst>255 "COMP"
  Set ns=$ql(sref)
  Set $p(byt,$c(0),257)="",nod=src
@@ -227,7 +227,7 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
  For i=1:1:256 Set:$d(obj(i)) $e(obj(0),i)=$c(^%shm("Obj",obj(i)))
  Set obj=19 Quit $$Save^%ShmObj(.obj)
 %COL New obj,typ,byt,top,pag
- Set $ZT="%CompERROR",oid=$$%CompSUB(@ref@(4),.byt,.top,.pag) Quit:oid<1
+ Set $ZT="G %CompERROR",oid=$$%CompSUB(@ref@(4),.byt,.top,.pag) Quit:oid<1
  Set obj(1)=$s($d(pag):$C(13),1:$C(12))
  Set typ=+$g(^%shm("Obj",oid)),obj(3)=oid Goto:$d(byt) %XLTPack
  Set obj=9
@@ -240,7 +240,7 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
 %SUBFromCol Set sbt=1 Goto %SUBCol
 %SUBMulti Set sbt=2 Goto %SUBCol
 %SUBCol New obj,oid,i,dst,out
- Set src=$name(@sref@("Src","SUB",name,1)),$ZT="%CompERROR"
+ Set src=$name(@sref@("Src","SUB",name,1)),$ZT="G %CompERROR"
  Set i="",dst=$name(^%utility($j,"SUB")) Kill @dst
  For  Set i=$o(@src@(i)) Quit:i=""  Merge @dst@(i\256,i#256)=@src@(i)
  Set obj=19,$p(obj(0),$c(0),257)=""
@@ -248,12 +248,12 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
  . Set obj(i+1)=oid,$e(obj(0),i+1)=$c(^%shm("Obj",oid))
  If $o(obj(1))=""  Set pag=1 Quit +$g(obj(1)) 
  Quit $$Save^%ShmObj(.obj)
-%CompPAGCol(ref,sbt) New hi,obj,oid Set hi="",obj=19,$ZT="%CompERROR"
+%CompPAGCol(ref,sbt) New hi,obj,oid Set hi="",obj=19,$ZT="G %CompERROR"
  Set $p(obj(0),$c(0),257)=""
  For  Set hi=$o(@ref@(hi)) Quit:hi=""  Set oid=$$%CompMultiStruct($name(@ref@(hi)),sbt) Do:oid
  . Set obj(hi+1)=oid,$e(obj(0),hi+1)=$c(^%shm("Obj",oid))
  Quit $$Save^%ShmObj(.obj)
-%CompMultiStruct(ref,sbt) New obj,nod,bas,from,to,val,i,ns,p,yes,no,opt Set $ZT="%CompERROR"
+%CompMultiStruct(ref,sbt) New obj,nod,bas,from,to,val,i,ns,p,yes,no,opt Set $ZT="G %CompERROR"
  Set ns=$ql(ref),bas=$qs(ref,ns),obj(0)=$c(2),i=2
  Set nod=ref,yes=0,no=0,opt=1 Set:$d(@nod)#10=0 nod=$q(@nod)
  For  Quit:nod=""  Quit:$qs(nod,ns)'=bas  Set to=@nod Do  Set nod=$q(@nod)
@@ -286,10 +286,10 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
  . Set obj(0)=obj(0)_$c(^%shm("Obj",obj(i))),i=i+1
  Set obj=9,obj(1)=$C(sbt)
  Quit $$Save^%ShmObj(.obj)         
-%CompPAK(ref) New myval,i Set $ZT="%CompERROR"
+%CompPAK(ref) New myval,i Set $ZT="G %CompERROR"
  For i=0:1:255 Set:$d(@ref@(i))#2 myval(i)=@ref@(i)
  Quit $$%CompPAGMulti("myval")
-%CompBITS(ref) New max,from,to,bits,obj,i,val Set $ZT="%CompERROR"
+%CompBITS(ref) New max,from,to,bits,obj,i,val Set $ZT="G %CompERROR"
  Set max=-1,from=$o(@ref@(""))
  For  Quit:from=""  Set to=^(from)+from-1 zt:to<from "COMP" Set:to>max max=to Set from=$o(^(from))
  zt:(max<0)!(max>65535) "COMP" Goto:max<256 %CBYT2BIT
@@ -306,7 +306,7 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
  Set obj=7,obj(0)=$C(1,3,1)
  Set obj(1)=$C(9,1),obj(2)=$ZLC(0),obj(3)=$e(bits,2,33)
  Quit $$Save^%ShmObj(.obj)
-%CompVAL(ref,cvt) New hi,obj,oid Set hi="",obj=19,$ZT="%CompERROR"
+%CompVAL(ref,cvt) New hi,obj,oid Set hi="",obj=19,$ZT="G %CompERROR"
  Set $p(obj(0),$c(0),257)=""
  For  Set hi=$o(@ref@(hi)) Quit:hi=""  Set oid=$$%CompPAG($name(@ref@(hi))) Do:oid
  . Set obj(hi+1)=oid,$e(obj(0),hi+1)=$c(^%shm("Obj",oid))
@@ -318,7 +318,7 @@ All New ttyp,fromenc,name,oid Set fromenc="",name=""
  . Set obj(0)=$C(1,3,19),obj(3)=oid
  . Set obj(1)=$C(10,cvt)
  Set obj=9,obj(2)=$ZLC(0) Quit $$Save^%ShmObj(.obj)
-%CompPAG(ref) New max,obj,i,lo,val Set max=-1,lo=$o(@ref@("")),$ZT="%CompERROR"
+%CompPAG(ref) New max,obj,i,lo,val Set max=-1,lo=$o(@ref@("")),$ZT="G %CompERROR"
  For  Quit:lo=""  Set val=^(lo),lo=$o(^(lo)) Set:val>max max=val
  zt:(max<0)!(max>$ZH("ffffffff")) "COMP" Goto %CompPAG1:max<256,%CompPAG2:max<65536
  Set val="" For i=0:1:255 Set val=val_$ZLC($g(^(i)))

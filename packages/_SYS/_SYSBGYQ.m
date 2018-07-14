@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -79,7 +79,7 @@ OSS ;;DSM/11-V2,1024,1018,0,251  DSM/11-V3,1024,1018,2,251  M/11,1024,1018,0,255
 INIT W !,"Load globals from a tape written by %GOQ."
  W !,">>>>> quel volume >>>" R VOLUME
  L %GIQ:0 E  W !,"[Another copy of %GIQ is running now.]" Q
- K (VOLUME) S IO=0,$ZE="",$ZT="EXIT" D INT^%DIR,^%ST S GVECA=%ST("GVEC"),PRIN=%ST("PRIN"),VWBUF=%ST("VBUF") K %ST O 63 C 63
+ K (VOLUME) S IO=0,$ZE="",$ZT="G EXIT" D INT^%DIR,^%ST S GVECA=%ST("GVEC"),PRIN=%ST("PRIN"),VWBUF=%ST("VBUF") K %ST O 63 C 63
  
 MT W !,"Load from magtape" D ^%IS G:POP EXIT
  I (IO<47)!(IO>50) W !,"[Magtape devices 47-50 only.]" C IO G MT
@@ -125,17 +125,17 @@ EXIT S $ZT="" I $D(VWBUF) V VWBUF:-1:4:0
  U 0 C:(IO'=$I)&(IO'="") IO L  Q
  
 GLO 
- S $ZT="ERR" U IO R GLO
+ S $ZT="G ERR" U IO R GLO
  S MTBUFA=$V($V(PRIN+4,-1,4)+48,-3,4) V VWBUF:-1:4:MTBUFA
  S GLONAM="^"_GLO U 0 W !,GLONAM,"...  " I '($D(@GLONAM)) G GLO3
  
- W "is already present.  Skipping it on tape." S $ZT="ERR2"
+ W "is already present.  Skipping it on tape." S $ZT="G ERR2"
 GLO2 U IO F Z=0:0 W *-6 S NEXTBN=$V(LINKA,0,3) Q:NEXTBN=0
  Q
  
 GLO3 S @GLONAM@(1)="" K ^(1)
  S GLOVEC=$V(GVECA,-1,4),DATABN=$V(GLOVEC+40,-3,3),PNTRBN=$V(GLOVEC+36,-3,3)
- S NEXTBN=0,NBLKS=1,$ZT="ERR3A"
+ S NEXTBN=0,NBLKS=1,$ZT="G ERR3A"
 GLO3A U IO W *-6 S NEXTBN=$V(LINKA,0,3) D:OS="M/DG" MDGFIX
  W *
 GLO3B F NBLKS=NBLKS:1 Q:NEXTBN=0  W *-6 D:OS="M/DG" MDGFIX W *

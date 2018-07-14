@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -130,7 +130,7 @@ VUKEMP(TYPE,NUM)
  
  
 TESTFRM() N (FRM,C,ESSAI,CFC)
- S $ZT="ERRFRM"
+ S $ZT="G ERRFRM"
  S @("ESSAI="_FRM)
  S $ZT="" Q 1
 ERRFRM S $ZT="" Q 0

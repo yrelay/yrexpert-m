@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -65,6 +65,6 @@
  ;EXAMPLE OF HOW TO USE THIS ROUTINE:
  ;  COULD TEST WHETHER DIR IS A LOGICAL FOR SYSTEM MANAGER
  ;  BY TESTING $$^%DIRFULL(DIR)=$$^%DIRFULL("SYS$M")
- S $ZT="ERR^"_$P($ZPOS,"^",2) Q $ZU(12,DIR)
+ S $ZT="G ERR^"_$P($ZPOS,"^",2) Q $ZU(12,DIR)
 ERR S $ZT="" d MSG^%UTIL($P($ZPOS,"^",2)_": Volume cannot be mounted: "_DIR,0,1) Q ""
 

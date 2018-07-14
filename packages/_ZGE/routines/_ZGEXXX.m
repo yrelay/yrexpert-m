@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -79,7 +79,7 @@ STAT S %ALM=0,$P(%ED,U,3)=$P(^%ZGE("C",+(%ED),0),U,1)_" *** File "_PGM_" "_$S(WO
 1 
  
  
-E S DX=0,DY=EDSL+3 X XY W *7,"?File not found ",$ZE X XL S $ZT="E^%ZGEWORD",PGM="" D FILE,LOAD G ED
+E S DX=0,DY=EDSL+3 X XY W *7,"?File not found ",$ZE X XL S $ZT="G E^%ZGEWORD",PGM="" D FILE,LOAD G ED
  
  
 OLD1 

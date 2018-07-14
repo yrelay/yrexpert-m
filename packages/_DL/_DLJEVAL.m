@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -79,7 +79,7 @@ BCOND S NOFI=$O(@LTT@(NOFI))
  S LTEST=LTT2_NOFI_")"
  S TEST=@LTEST
  S TAB=LTEST,SIF=1
-RETER1 S $ZT="ERR^%DLJEVAL"
+RETER1 S $ZT="G ERR^%DLJEVAL"
  S @("CONDIT=CONDIT"_LOGI_TEST)
  S LOGI=$S($D(@LTEST@("OPERATEUR")):@LTEST@("OPERATEUR"),1:"&")
  G BCOND
@@ -88,7 +88,7 @@ VAL G:'(CONDIT) LOOP
  S LTEST="^[QUI]ADLJ"_PRX I @LTEST="" S CONDIT=0 G LOOP
  S SIF=1,COND=0
  S TAB=LTEST
-RETER2 S $ZT="ERR^%DLJEVAL"
+RETER2 S $ZT="G ERR^%DLJEVAL"
  S TEST=@LTEST
  S @("VAL="_TEST)
  S ^V($J,"DEFAUT",DEF,"JALON")=VAL,%JALON=VAL

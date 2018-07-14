@@ -59,8 +59,11 @@
 ;! HL003 ! HL     ! 10/06/12 ! Déplacement de /usr/local/ vers /opt/          !
 ;! HL004 ! HL     ! 15/08/12 ! La base YXP devient YEXPERT                    !
 ;! HL005 ! HL     ! 11/11/15 ! Démarrer avec la partition "YXP"               !
+;! HL006 ! HL     ! 03/07/18 ! %Y* reservé SYS - remplacer %YEXPERT/YREXPERT  !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
+
+
 
 VSTART ;
  
@@ -74,11 +77,11 @@ VSTART ;
  S hh=$P($ZD($H,"24:60:SS"),":",1)
  S mm=$P($ZD($H,"24:60:SS"),":",2)
  S ss=$P($ZD($H,"24:60:SS"),":",3)
- S ^%YEXPERT($I,"DATE","DEB")=$ZD($H,"DD/MM/YEAR")
- S ^%YEXPERT($I,"TIME","DEB")=$ZD($H,"24:60:SS")
- S ^%YEXPERT($I,"CHRONO","DEB")=($P($H,",")*86400)+((((hh*60)+mm)*60)+ss)
- S:'$D(^%YEXPERT($I,"CONNECTION","NB")) ^%YEXPERT($I,"CONNECTION","NB")=0 S ^%YEXPERT($I,"CONNECTION","NB")=^%YEXPERT($I,"CONNECTION","NB")+1
- S:'$D(^%YEXPERT("*","CONNECTION","NB")) ^%YEXPERT("*","CONNECTION","NB")=0 S ^%YEXPERT("*","CONNECTION","NB")=^%YEXPERT("*","CONNECTION","NB")+1
+ S ^YREXPERT($I,"DATE","DEB")=$ZD($H,"DD/MM/YEAR")
+ S ^YREXPERT($I,"TIME","DEB")=$ZD($H,"24:60:SS")
+ S ^YREXPERT($I,"CHRONO","DEB")=($P($H,",")*86400)+((((hh*60)+mm)*60)+ss)
+ S:'$D(^YREXPERT($I,"CONNECTION","NB")) ^YREXPERT($I,"CONNECTION","NB")=0 S ^YREXPERT($I,"CONNECTION","NB")=^YREXPERT($I,"CONNECTION","NB")+1
+ S:'$D(^YREXPERT("*","CONNECTION","NB")) ^YREXPERT("*","CONNECTION","NB")=0 S ^YREXPERT("*","CONNECTION","NB")=^YREXPERT("*","CONNECTION","NB")+1
  
  S ^%PK($I)="VT220"
  D INIT^%SGVAR
@@ -108,7 +111,7 @@ VSTART ;
  S hh=$P($ZD($H,"24:60:SS"),":",1)
  S mm=$P($ZD($H,"24:60:SS"),":",2)
  S ss=$P($ZD($H,"24:60:SS"),":",3)
- S chr=(($P($H,",")*86400)+(((((hh*60)+mm)*60)+ss)))-^%YEXPERT($I,"CHRONO","DEB")
+ S chr=(($P($H,",")*86400)+(((((hh*60)+mm)*60)+ss)))-^YREXPERT($I,"CHRONO","DEB")
  
  
  D NORM^%VVIDEO,CLEPAG^%VVIDEO
@@ -164,11 +167,11 @@ VSTART ;
 
  W !
  W "Session : " W:$D(QUI) QUI
- W ?10,". Ouverte le ",^%YEXPERT($I,"DATE","DEB")," à ",^%YEXPERT($I,"TIME","DEB"),!
+ W ?10,". Ouverte le ",^YREXPERT($I,"DATE","DEB")," à ",^YREXPERT($I,"TIME","DEB"),!
  W ?10,". Fermée le ",$ZD($H,"DD/MM/YEAR")," à ",$ZD($H,"24:60:SS"),!
  W ?10,". Durée d'utilisation ",chr\86400," jour(s) ",$ZD("0,"_chr,"24:60:SS"),!
- W ?10,". Nombre de connections pour ",$I," : ",^%YEXPERT($I,"CONNECTION","NB"),!
- W ?10,". Nombre de connections pour ","*"," : ",^%YEXPERT("*","CONNECTION","NB"),!
+ W ?10,". Nombre de connections pour ",$I," : ",^YREXPERT($I,"CONNECTION","NB"),!
+ W ?10,". Nombre de connections pour ","*"," : ",^YREXPERT("*","CONNECTION","NB"),!
  W ?60,"au revoir...",!
  
  R "[RETURN]",*X:180

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -100,7 +100,7 @@ OPEN(APP,NODE,DATE,UNIT,PROT,VECT,LL)
  S ER=$$C
  S ER=$$O
  Q ER
-O() S $ZT="ERREUR^LKPHYERR"
+O() S $ZT="G ERREUR^LKPHYERR"
  O:TIMEOUT UNIT:(MODE:@PVECT@("SIZ"):@PVECT@("BLK")) S ZA=$ZA S:0 @TEMP@("ERR","TIMEOUT")=" Time out",T=1
  S $ZT="" Q 0
  
@@ -113,7 +113,7 @@ CLOSE()
  S ER=$$C
  K @(TEMP)
  Q ER
-C() S $ZT="ERREUR^LKPHYERR"
+C() S $ZT="G ERREUR^LKPHYERR"
  C UNIT S ZA=$ZA
  S $ZT="" Q 0
  

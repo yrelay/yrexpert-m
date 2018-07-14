@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -74,10 +74,10 @@ PRODUC(ADRET)
  N %REP,%IND,REGMC,GCOMP,ICOND,TYPDIA,ERR,PILE,LEVEL,TEMP,ASC,%ASC
  N GREL,IBUT,OKB
  
- S $ZT="PROD2^%QWMCAC1"
+ S $ZT="G PROD2^%QWMCAC1"
  S OKB=1 F IBUT=1:1:@WWBUT I @(@WWBUT@(IBUT,"E")_"=0")  S OKB=0 Q
  S $ZT="" I OKB&(@WWBUT'=0) G BUTROUV^%QWMCACS
-PROD2 S $ZT="ERREF^%QWMCAC1"
+PROD2 S $ZT="G ERREF^%QWMCAC1"
  I @(REFUSMNP)  S $ZT="" G AFREFUS^%QWMCACS
 ERREF S $ZT=""
  S TEMP=$$TEMP^%QZCHAD($P($ZPOS,"^",2),"T")
@@ -104,7 +104,7 @@ UNXREG S REGMC=$O(@GDOM@(REGMC)) G:REGMC="" UNXDOM
  G:$D(@GCOMP@("PM"))<10 @$$ACTION(DOMCOUR,REGMC)
  S ICOND=""
 UNXCD S ICOND=$O(@GCOMP@("PM",ICOND)) G:ICOND="" UNXREG
- S ERR="",$ZT="UERR^%QWMCAC1"
+ S ERR="",$ZT="G UERR^%QWMCAC1"
 UTRAP I @(@GCOMP@("PM",ICOND,"E"))  S $ZT="" G @$$ACTION(DOMCOUR,REGMC)
 UERR S ERR=$ZE,$ZT="" G:(ERR="")!($E(ERR,1,6)="<UNDEF") UNXCD G UTRAP
 UNXDOM I DOMCOUR'="GENERAL" S DOMCOUR=^[QUI]RQSDON("QW","CD",DOMCOUR,"PERE"),@ASC@(%ASC)=DOMCOUR,%ASC=%ASC-1 G UBCDOM
@@ -155,7 +155,7 @@ PNXREG S REGMC=$O(@GDOM@(REGMC)) Q:REGMC="" ""
 PCDS G:$D(@GCOMP@("P"))<10 PNXREG
  S ICOND=""
 PNXCDS S ICOND=$O(@GCOMP@("P",ICOND)) G:ICOND="" PNXREG
- S ERR="",$ZT="PCDSE^%QWMCAC1"
+ S ERR="",$ZT="G PCDSE^%QWMCAC1"
 PCDSF I @(@GCOMP@("P",ICOND,"E"))  S $ZT="" G PCDM
 PCDSE S ERR=$ZE,$ZT="" G:(ERR="")!($E(ERR,1,6)="<UNDEF") PNXCDS G PCDSF
  
@@ -163,7 +163,7 @@ PCDSE S ERR=$ZE,$ZT="" G:(ERR="")!($E(ERR,1,6)="<UNDEF") PNXCDS G PCDSF
 PCDM I $D(@GCOMP@("PM"))<10 Q $$ACTION(DOMCOUR,REGMC)
  S ICOND=""
 PNXCDM S ICOND=$O(@GCOMP@("PM",ICOND)) G:ICOND="" PNXREG
- S ERR="",$ZT="PCDME^%QWMCAC1"
+ S ERR="",$ZT="G PCDME^%QWMCAC1"
 PCDMF I @(@GCOMP@("PM",ICOND,"E"))  S $ZT="" Q $$ACTION(DOMCOUR,REGMC)
 PCDME S ERR=$ZE,$ZT="" G:ERR="" PNXCDM G PCDMF
  

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -79,7 +79,7 @@ QWACR1(REP,IND,NR,DOM)
  N VAL,ATRES,NOUV,ERR,GCOMP
  S GCOMP=$$CONCAS^%QZCHAD("^[QUI]RQSDON(""QW"",""C1"")",DOM)
  
- S $ZT="ERCOND^%QWACR1"
+ S $ZT="G ERCOND^%QWACR1"
 COMP I @(@GCOMP@(NR,"C"))  S $ZT="" G ACT
  
  S $ZT="" Q 0
@@ -92,7 +92,7 @@ ACT S NOUV=1
  S ATRES=""
 ACT2 S ATRES=$O(@GCOMP@(NR,"R",ATRES)) G:ATRES="" FACT
  I @GCOMP@(NR,"S"),$$EXIRIAO^%QWSTOL(REP,IND,ATRES,1) G ACT2
- S $ZT="ERACT^%QWACR1"
+ S $ZT="G ERACT^%QWACR1"
 ACT21 S @("VAL="_@GCOMP@(NR,"R",ATRES,"E"))
  S $ZT=""
  I $$AFFECT^%QWSTOE(1,NR,NOUV,REP,IND,ATRES,1,VAL) S NOUV=0

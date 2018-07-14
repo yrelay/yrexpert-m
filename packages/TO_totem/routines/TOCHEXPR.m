@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -66,7 +66,7 @@ TOCHEXPR ;
  S %TBL=%TBL_"("_%R_","_%NU_")",NPAR=0,ADRF="TRAIT1^TOCHEXPR",XDP="("_XDP_")" D ^TOGSQUEL,RECONS^TOGSQUEL S @%TBL@(0)=EX
 FIN K ADRF,EX,VPOL,T,LOCA,NPAR,%U,%R,%II,BL,PCH Q
 TRAIT1 S PCH=VPOL(VI) D TO^%QZNBN1 Q:ISNUM  S NPAR=NPAR+1,@%TBL@(NPAR)=VPOL(VI),VPOL(VI)="T("_NPAR_")" Q
-GET S %ERR=0,$ZT="ERR" K T S NPAR=0 F %II=1:1 S NPAR=$N(@%TBL@(NPAR)) Q:NPAR=-1  S @("BL="_@%TBL@(NPAR)),@("T("_NPAR_")")=BL
+GET S %ERR=0,$ZT="G ERR" K T S NPAR=0 F %II=1:1 S NPAR=$N(@%TBL@(NPAR)) Q:NPAR=-1  S @("BL="_@%TBL@(NPAR)),@("T("_NPAR_")")=BL
  S EX=@%TBL@(0),@("RES1="_EX) G FIN
  
 TEST S NCLE=0,ARTI="TEST.ESSAI",%NU=1

@@ -54,7 +54,7 @@
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
-;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
+;! HL001 ! HL     ! 01/01/01 ! Erreur %GTM-E-INVCMD -> $ZT="G ..."            !
 ;! HL002 ! HL     ! 00/00/00 !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
@@ -75,7 +75,7 @@ BEG S %TREFC="" Q:%PR=1
 REFUS S TVL("ACCEPT")=0,STOP="F" G END
 BRAQ S ATEST=^[QUW]INTERGRI(NUGR,B(%PR))
  I ^VPAR($I,PARA)["," D GUPLEB G COND
- S $ZT="REFUS",%INT=^VPAR($I,PARA),@("TVL(""%CONDIT"")="_ATEST)
+ S $ZT="G REFUS",%INT=^VPAR($I,PARA),@("TVL(""%CONDIT"")="_ATEST)
 COND I TVL("%CONDIT")=1 S TVL("ACCEPT")=1 G SUIT
  G REFUS
 SUIT S ^GRIL($I,PARA)=B(%PR) I %PR'=(TVL("%NBPAR")+1) G END
@@ -85,7 +85,7 @@ SUIT S ^GRIL($I,PARA)=B(%PR) I %PR'=(TVL("%NBPAR")+1) G END
 END K B Q
 GUPLEB D T01 G:TVL("%SCPR")="N" T11
  S (%BI,TVL("%BI"))=TVL("%VMIN"),(%BS,TVL("%BS"))=TVL("%VMAX"),@("TVL(""%CONDIT"")="_ATEST) G FIN1
-T11 S $ZT="ERR" F %INT=TVL("%VMIN"),TVL("%VMAX") S @("TVL(""%CONDIT"")="_ATEST) G:TVL("%CONDIT")=0 FIN1
+T11 S $ZT="G ERR" F %INT=TVL("%VMIN"),TVL("%VMAX") S @("TVL(""%CONDIT"")="_ATEST) G:TVL("%CONDIT")=0 FIN1
  G FIN1
 T01 S TVL("%VCOMP")=^VPAR($I,PARA) D INTE
  I TVL("%VMIN")="" S TVL("%VMIN")=-99999999

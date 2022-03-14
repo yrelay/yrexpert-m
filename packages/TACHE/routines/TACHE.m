@@ -66,17 +66,17 @@ TACHE ;
  Q
 
 START()
- W "Start le gestionnaire de tâches"
+ W "Start : Démarrer le gestionnaire de tâches"
  W
  Q
 
 STOP()
- W "Stop le gestionnaire de tâches"
+ W "Stop : Arrêter le gestionnaire de tâches"
  W
  Q
 
 RESTART()
- W "Restart le gestionnaire de tâches"
+ W "Restart : Redémarrer le gestionnaire de tâches"
  W
  D STOP
  D START

@@ -62,16 +62,16 @@
 
 TACHE ;
  W "Usage: TACHE.m {start|stop|restart}"
- Q 0
+ Q
 
 START()
- Q 0
+ Q
 
 STOP()
- Q 0
+ Q
 
 RESTART()
  D STOP
  D START
- Q 0
+ Q
 

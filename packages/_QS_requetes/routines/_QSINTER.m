@@ -40,15 +40,15 @@
 ;!----------------------------------------------------------------------------!
 
 ;!============================================================================!
-;! Nomprog     :                                                              !
-;! Module      :                                                              !
-;! But         :                                                              !
+;! Nomprog     : %QSINTER                                                     !
+;! Module      : QS - requete                                                 !
+;! But         : Gérer les requetes                                           !
 ;!                                                                            !
-;! Description :                                                              !
+;! Description : $REQUETE                                                     !
 ;!                                                                            !
-;!                                                                            !
-;!                                                                            !
-;!                                                                            !
+;! Compléter les valeurs REQUETE, REPERTOI, LCRIT(1) à LCRIT(n) et ANALYSE=1  !
+;! Utliser CRE, ANA, SUP, EXI et ACT poour :                                  !
+;! CREER, ANALYSER, SUPPRIMER, vérifier si EXSITE et ACTIVER                  !
 ;!                                                                            !
 ;!----------------------------------------------------------------------------!
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
@@ -163,7 +163,7 @@ ACTI S Y1=$S(LISTE="":^[QUI]RQS1(REQ,"BASE"),1:LISTE)
  
  
 TEST X ^CBL
- S REQUETTE="TEST"
+ S REQUETE="TEST"
  S REPERTOI="CLIENT"
  S LCRIT(1)="CODE.POSTAL = 75120"
  S LCRIT(1,"TETE")=0
@@ -173,9 +173,15 @@ TEST X ^CBL
  S LCRIT(3,"TETE")=0
  S ANALYSE=1
  Q
-CRE W !,$$CREER(REQUETTE,REPERTOI,.LIND,.LCRIT,.LVAR,"",1) Q
-ANA W !,$$ANALYSER(REQUETTE) Q
-SUP D SUPPRIME(REQUETTE,1) Q
-EXI W !,$$EXISTE(REQUETTE) Q
-ACT W !,$$ACTIVE(REQUETTE,"") Q
+;S REQUETE="DMO.PONCTUATION.PARAM.SIGNE" view "LINK":"RECURSIVE" zl "_QSINTER","_QSGOREQ","_QSRECOP","_QSGOREQ","_QSCALCU","_QSACTIV","_QSACTI2","_QS1CALC","_QSRQEG" D ACT^%QSINTER
+TEST2 ;X ^CBL
+ S REQUETE="TEST"
+ S REPERTOI="ELEMENT"
+ S ANALYSE=1
+ Q
+CRE W !,$$CREER(REQUETE,REPERTOI,.LIND,.LCRIT,.LVAR,"",1) Q
+ANA W !,$$ANALYSER(REQUETE) Q
+SUP D SUPPRIME(REQUETE,1) Q
+EXI W !,$$EXISTE(REQUETE) Q
+ACT W !,$$ACTIVE(REQUETE,"") Q
 

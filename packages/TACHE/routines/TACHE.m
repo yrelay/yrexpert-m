@@ -40,44 +40,38 @@
 ;!----------------------------------------------------------------------------!
 
 ;!============================================================================!
-;! Nomprog     : %QSRECOP                                                     !
-;! Module      : %QS - requete                                                !
-;! But         : Récupère les individus d'un répertoire                       !
+;! Nomprog     : TACHE                                                        !
+;! Module      : TACHE                                                        !
+;! But         : Gestions des taches planifiés                                !
 ;!                                                                            !
-;! Description : $REQUETE                                                     !
+;! Description :                                                              !
 ;!                                                                            !
-;!                                                                            !
-;!                                                                            !
-;!                                                                            !
+;! START    : démarrer                                                        !
+;! STOP     : arrêter                                                         !
+;! RESTART  : redémarrer                                                      !
 ;!                                                                            !
 ;!----------------------------------------------------------------------------!
 ;! Modif ! Auteur ! Date     ! Commentaires                                   !
 ;!-------!--------!----------!------------------------------------------------!
-;!       ! HL     ! 22/03/01 ! Creation                                       !
+;!       ! HL     ! 22/02/22 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 03/05/20 ! Remplacement $NEXT par $ORDER car PB avec -1   !
+;! HL002 !        !          !                                                !
+;! HL003 !        !          !                                                !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
-;%QSRECOP^INT^1^59547,73883^0
-%QSRECOP ;
- 
- 
- 
- 
- 
- 
- 
- 
- N L,N,NI,O,%O,OKECR
- S OKECR=$$GET^%SGVAR("ECR")
- S NI=$$NOMINT^%QSF(ENTREE)
- I NI="" S RQSRESUL="" D:^TOZE($I,"DEBUG") ^%VZEAVT($$^%QZCHW("Repertoire ")_ENTREE_$$^%QZCHW(" inconnu")) S ERRCAL=1 Q
- I $D(^[QUI]RQS2(ENTREE)) S L="^[QUI]RQS2("""_ENTREE_""",OBJET"")"
- E  S L=$$LISTIND^%QSGEST6(NI)
- W:OKECR "."
- ;HL002 S N=0,O=-1 F %O=0:0 S O=$N(@L@(O)) Q:O=-1  S N=N+1 W:((N#100)=0)&OKECR "%" S ^[QUI]RQS2(RQSRESUL,"OBJET",O)=N,^[QUI]ZLIGTRIE(LISTRI,N)=O
- S N=0,O="" F %O=0:0 S O=$O(@L@(O)) Q:O=""  S N=N+1 W:((N#1000)=0)&OKECR "%" S ^[QUI]RQS2(RQSRESUL,"OBJET",O)=N,^[QUI]ZLIGTRIE(LISTRI,N)=O
- S ^[QUI]RQS2(RQSRESUL,"CARD")=N
- Q
+TACHE ;
+ W "Usage: TACHE.m {start|stop|restart}"
+ Q 0
+
+START()
+ Q 0
+
+STOP()
+ Q 0
+
+RESTART()
+ D STOP
+ D START
+ Q 0
 

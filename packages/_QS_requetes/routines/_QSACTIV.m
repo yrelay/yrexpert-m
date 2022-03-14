@@ -40,11 +40,11 @@
 ;!----------------------------------------------------------------------------!
 
 ;!============================================================================!
-;! Nomprog     :                                                              !
-;! Module      :                                                              !
-;! But         :                                                              !
+;! Nomprog     : %QSACTIV                                                     !
+;! Module      : %QS - requete                                                !
+;! But         : Activer la requete                                           !
 ;!                                                                            !
-;! Description :                                                              !
+;! Description : $REQUETE                                                     !
 ;!                                                                            !
 ;!                                                                            !
 ;!                                                                            !
@@ -61,7 +61,6 @@
 
 ;%QSACTIV^INT^1^59573,35453^0
 %QSACTIV(AR,BA,LD,AD,CD) 
- 
  
  
  

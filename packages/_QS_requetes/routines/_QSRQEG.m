@@ -40,11 +40,11 @@
 ;!----------------------------------------------------------------------------!
 
 ;!============================================================================!
-;! Nomprog     :                                                              !
-;! Module      :                                                              !
-;! But         :                                                              !
+;! Nomprog     : %QSRQEG                                                      !
+;! Module      : %QS - requete                                                !
+;! But         : Calculer la requete                                          !
 ;!                                                                            !
-;! Description :                                                              !
+;! Description : $REQUETE                                                     !
 ;!                                                                            !
 ;!                                                                            !
 ;!                                                                            !
@@ -55,7 +55,7 @@
 ;!-------!--------!----------!------------------------------------------------!
 ;!       ! HL     ! 22/03/01 ! Creation                                       !
 ;! HL001 ! HL     ! 00/00/00 ! Description succincte de la modification.      !
-;! HL002 ! HL     ! 00/00/00 !                                                !
+;! HL002 ! HL     ! 05/05/20 ! Traiter le cas du GUILLEMET.DROIT              !
 ;!-------!--------!----------!------------------------------------------------!
 ;!============================================================================!
 
@@ -80,7 +80,12 @@ RQSRQEG(A,LD,B,FC,N)
  
  
  I (V+0)=V S @("V="_V) G ATR0
- 
+
+ ;test S REQUETE="%%%" view "LINK":"RECURSIVE" zl "_QSRQEG" D ACT^%QSINTER
+ ;HL002 S V=$$ZSUBST^%QZCHSUB(V,"""","")
+ I V="""""""""" S V="""" G ATR0
+ I V="""""""" S V="""" G ATR0
+ I V="""" S V="=" G ATR0
  S V=$$ZSUBST^%QZCHSUB(V,"""","")
  
 ATR0 S ATS=J_"/"_$$NOMLOG^%QSF(B)

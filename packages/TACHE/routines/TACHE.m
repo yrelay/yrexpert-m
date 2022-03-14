@@ -61,23 +61,19 @@
 ;!============================================================================!
 
 TACHE ;
- W "Usage: TACHE.m {start|stop|restart}"
- W
+ W "Usage: TACHE.m {start|stop|restart}",!
  Q
 
 START()
- W "Start : Démarrer le gestionnaire de tâches"
- W
+ W "Start : Démarrer le gestionnaire de tâches",!
  Q
 
 STOP()
- W "Stop : Arrêter le gestionnaire de tâches"
- W
+ W "Stop : Arrêter le gestionnaire de tâches",!
  Q
 
 RESTART()
- W "Restart : Redémarrer le gestionnaire de tâches"
- W
+ W "Restart : Redémarrer le gestionnaire de tâches",!
  D STOP
  D START
  Q
